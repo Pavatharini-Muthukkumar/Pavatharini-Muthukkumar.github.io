@@ -121,7 +121,7 @@ p{margin:0}
 @media (max-width:760px){.numbers .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.num:nth-child(3){border-left:0}.num:nth-child(n+3){border-top:1px solid var(--rule)}}
 
 /* ---------- sections */
-section{padding-block:clamp(48px,7vw,96px)}
+section{padding-block:clamp(48px,7vw,96px);scroll-margin-top:64px}
 .sec-head{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;align-items:end;margin-bottom:28px}
 .sec-head .sheet-no{grid-row:span 2;font-family:var(--f-mono);font-size:.78rem;border:1.5px solid var(--ink);padding:8px 10px;line-height:1.25;text-align:center;background:var(--sheet)}
 .sec-head .sheet-no b{display:block;font-size:1.3rem;font-family:var(--f-display);font-weight:800}
@@ -172,7 +172,11 @@ details[open] summary::before{content:"−"}
 .pipe .arrow{font-family:var(--f-mono);color:var(--muted);font-size:.75rem;padding-left:20px}
 
 /* ---------- Kubera playground */
-.play{margin-top:30px;background:var(--sheet);border:1.5px solid var(--ink);border-radius:6px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.kub{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;background:var(--sheet);border:1.5px solid var(--rule);border-radius:6px;padding:22px}
+@media (max-width:860px){.kub{grid-template-columns:1fr}}
+.kub-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.kub .story div{grid-template-columns:70px 1fr}
+.play{background:var(--sheet);border:1.5px solid var(--ink);border-radius:6px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 @media (max-width:860px){.play{grid-template-columns:1fr}}
 .play > div{padding:22px;min-width:0}
 .play > div + div{border-left:1px solid var(--rule)}
@@ -247,7 +251,7 @@ footer span{opacity:.65}
   <div class="wrap">
     <a class="mark" href="#top"><i>P</i>Pavatharini M.</a>
     <nav class="nav" aria-label="Sections">
-      <a href="#work">Work</a><a href="#kubera-try">Try it</a><a href="#path">Path</a><a href="#toolbox">Toolbox</a><a href="#contact">Contact</a>
+      <a href="#work">Work</a><a href="#kubera">Kubera</a><a href="#path">Path</a><a href="#toolbox">Toolbox</a><a href="#contact">Contact</a>
     </nav>
     <button class="theme" id="theme" type="button" aria-label="Switch light or dark theme" title="Switch theme">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
@@ -297,7 +301,7 @@ footer span{opacity:.65}
     <div class="sec-head">
       <div class="sheet-no">SHEET<b>S-100</b></div>
       <h2 id="work-h">Selected work</h2>
-      <p>Twelve projects, newest first. Open any card for the problem, the approach and the result.</p>
+      <p>Eleven projects, newest first. Open any card for the problem, the approach and the result. Kubera Finance has its own sheet below, with a live demo.</p>
     </div>
 
     <div class="filters" role="group" aria-label="Filter projects">
@@ -350,22 +354,6 @@ footer span{opacity:.65}
             <div><dt>Result</dt><dd style="margin:0">A leaderboard keeps staff playing, and feedback teaches each person the answers they missed.</dd></div>
           </dl>
         </details>
-      </article>
-
-      <article class="card" data-tags="genai docai eng">
-        <div class="meta"><span>2025–26 · Personal</span><span>Live demo</span></div>
-        <h3>Kubera Finance</h3>
-        <p class="what">Bank statements in, categorised spending out. Reads PDF and Excel statements from four German banks and feeds a monthly dashboard.</p>
-        <div class="impact"><b>Hybrid</b><span>rules for well-known merchants, Gemini for the long tail; every row says which one decided</span></div>
-        <ul class="stack"><li>pdfplumber</li><li>Gemini</li><li>Supabase</li><li>Appsmith</li><li>Streamlit</li><li>pytest</li></ul>
-        <details>
-          <summary>How it works</summary>
-          <dl class="story">
-            <div><dt>Approach</dt><dd style="margin:0">One parser per bank, stable IDs so overlapping statements never double count, own-account transfers excluded by rule, recurring contracts detected on a calendar grid.</dd></div>
-            <div><dt>Result</dt><dd style="margin:0">A public demo where anyone can upload a statement and watch each booking get its category.</dd></div>
-          </dl>
-        </details>
-        <div class="links"><a href="https://kuberafinanceapp.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a><a href="https://github.com/Pavatharini-Muthukkumar/Kubera_Finance_app" target="_blank" rel="noopener">Code ↗</a><a href="#kubera-try">Try it here ↓</a></div>
       </article>
 
       <article class="card" data-tags="vision">
@@ -460,9 +448,33 @@ footer span{opacity:.65}
 
     </div>
 
-    <div class="play" id="kubera-try" aria-labelledby="play-h">
+  </div>
+</section>
+
+<section id="kubera" aria-labelledby="kub-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sheet-no">SHEET<b>S-150</b></div>
+      <h2 id="kub-h">Kubera Finance</h2>
+      <p>A personal project you can use right now: bank statements in, categorised spending out.</p>
+    </div>
+    <div class="kub">
+      <div class="kub-story">
+        <dl class="story" style="margin-top:0">
+          <div><dt>Problem</dt><dd style="margin:0">Every German bank exports statements in its own format, and sorting a year of bookings into categories by hand takes evenings.</dd></div>
+          <div><dt>Built</dt><dd style="margin:0">A pipeline that reads PDF and Excel statements from four banks, removes duplicates from overlapping statements, sets aside transfers between my own accounts and spots recurring contracts. Well-known shops are sorted by rule; everything else goes to Gemini, checked against a fixed list of 61 categories.</dd></div>
+          <div><dt>Result</dt><dd style="margin:0">A monthly dashboard of income, spending and contracts, and a public demo where anyone can upload a statement and watch each booking get its category.</dd></div>
+        </dl>
+      </div>
+      <div class="kub-side">
+        <div class="impact" style="border-top:0;padding-top:0"><b>4 banks</b><span>DKB, N26, Deutsche Bank and Barclays, read automatically</span></div>
+        <ul class="stack"><li>pdfplumber</li><li>Gemini</li><li>Supabase</li><li>Appsmith</li><li>Streamlit</li><li>pytest</li></ul>
+        <div class="cta" style="margin-top:4px"><a class="btn solid" href="https://kuberafinanceapp.streamlit.app/" target="_blank" rel="noopener">Open live demo ↗</a><a class="btn" href="https://github.com/Pavatharini-Muthukkumar/Kubera_Finance_app" target="_blank" rel="noopener">Code ↗</a></div>
+      </div>
+    </div>
+    <div class="play" id="kubera-try" aria-labelledby="play-h" style="margin-top:22px">
       <div>
-        <p class="label">Kubera Finance · try the categoriser</p>
+        <p class="label">Try the categoriser</p>
         <h3 id="play-h" style="margin-top:8px">Type a bank booking</h3>
         <p style="margin-top:10px;color:var(--muted)">Kubera checks a short list of merchant rules first. Anything the rules don't know goes to Gemini. Try a well-known shop, then something only a person would recognise.</p>
         <label for="booking">Booking text</label>

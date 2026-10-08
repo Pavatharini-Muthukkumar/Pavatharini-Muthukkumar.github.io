@@ -159,6 +159,10 @@ details[open] summary::before{content:"−"}
 .links a{font-family:var(--f-mono);font-size:.8rem;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:1px}
 .card[hidden]{display:none}
 
+.aoi{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--paper)}
+.aoi canvas{display:block;width:100%;aspect-ratio:16/9}
+.aoi figcaption{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.aoi figcaption b{color:var(--accent)}
 /* pipeline diagram inside the feature card */
 .pipe{display:grid;gap:8px;align-content:start}
 .pipe .stage{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--rule);border-radius:4px;background:var(--paper)}
@@ -367,13 +371,18 @@ footer span{opacity:.65}
       <article class="card" data-tags="vision">
         <div class="meta"><span>2022–25 · Panasonic</span><span>Award</span></div>
         <h3>Automatic optical inspection</h3>
-        <p class="what">A YOLOR-based model that checks circuit boards on the production line alongside human inspectors.</p>
+        <p class="what">A YOLOR model that finds improperly seated connectors on electric-car control boards, for a German premium EV maker, right on the production line.</p>
+        <figure class="aoi" style="margin:0">
+          <canvas id="aoi" role="img" aria-label="A circuit board with six connectors. Running the inspection marks four as OK and flags one tilted connector and one with a bent pin."></canvas>
+          <figcaption><span id="aoi-sum">6 connectors · press Inspect</span><button class="rerun" id="aoi-run" type="button">Inspect board</button></figcaption>
+        </figure>
         <div class="impact"><b>960 h</b><span>of inspection time reclaimed every year, and a Business Unit Director Award</span></div>
         <ul class="stack"><li>YOLOR</li><li>Object detection</li><li>Python</li></ul>
         <details>
           <summary>How it works</summary>
           <dl class="story">
-            <div><dt>Approach</dt><dd style="margin:0">Built and deployed a YOLOR detector for automatic optical inspection, and led quality initiatives with teams in Germany and Slovakia.</dd></div>
+            <div><dt>Problem</dt><dd style="margin:0">A connector that is tilted, half-plugged or has a bent pin passes electrical tests on the line and fails later in the car.</dd></div>
+            <div><dt>Approach</dt><dd style="margin:0">Built and deployed a YOLOR detector that checks every connector on the board image, and led the rollout with quality teams in Germany and Slovakia.</dd></div>
             <div><dt>Result</dt><dd style="margin:0">Higher inspection precision and a measurable cut in manual review.</dd></div>
           </dl>
         </details>
@@ -749,6 +758,64 @@ footer span{opacity:.65}
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{colors(); if(reduce) draw(0);});
   new IntersectionObserver(([en])=>{ visible=en.isIntersecting; if(visible) start(); }).observe(cv);
   document.fonts && document.fonts.ready.then(()=>{ if(reduce) draw(0); });
+})();
+
+/* ---------- inspection card: a board, six connectors, two defects */
+(function(){
+  const cv=document.getElementById('aoi'), ctx=cv.getContext('2d'), sum=document.getElementById('aoi-sum');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // positions as fractions of the board; defect: tilt = not seated, pin = bent pin
+  const parts=[
+    {x:.14,y:.30,w:.20,h:.14,pins:6},{x:.45,y:.26,w:.16,h:.14,pins:4,defect:'tilt'},{x:.74,y:.30,w:.16,h:.14,pins:4},
+    {x:.16,y:.70,w:.16,h:.14,pins:4},{x:.47,y:.72,w:.22,h:.14,pins:7,defect:'pin'},{x:.78,y:.70,w:.14,h:.14,pins:3}];
+  let W=0,H=0,scan=-1,raf=0,C={};
+  function colors(){const s=getComputedStyle(document.documentElement);
+    C={sheet:s.getPropertyValue('--sheet').trim(),ink:s.getPropertyValue('--ink').trim(),plan:s.getPropertyValue('--plan').trim(),
+       accent:s.getPropertyValue('--accent').trim(),ok:s.getPropertyValue('--ok').trim(),rule:s.getPropertyValue('--rule').trim(),muted:s.getPropertyValue('--muted').trim()};}
+  function size(){const d=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);}
+  function draw(){
+    ctx.fillStyle=C.sheet; ctx.fillRect(0,0,W,H);
+    // traces
+    ctx.strokeStyle=C.rule; ctx.lineWidth=2; ctx.beginPath();
+    for(let i=0;i<7;i++){const y=H*(.12+i*.13); ctx.moveTo(W*.04,y); ctx.lineTo(W*(.3+((i*37)%40)/100),y); ctx.lineTo(W*(.36+((i*37)%40)/100),y+H*.05); ctx.lineTo(W*.96,y+H*.05);}
+    ctx.stroke();
+    ctx.fillStyle=C.rule; [[.06,.1],[.94,.1],[.06,.9],[.94,.9]].forEach(([a,b])=>{ctx.beginPath();ctx.arc(W*a,H*b,4,0,7);ctx.fill();});
+    let found=0, bad=0;
+    parts.forEach(p=>{
+      const x=W*p.x-W*p.w/2, y=H*p.y-H*p.h/2, w=W*p.w, h=H*p.h;
+      ctx.save(); ctx.translate(x+w/2,y+h/2); if(p.defect==='tilt') ctx.rotate(-.16);
+      ctx.fillStyle=C.ink; ctx.fillRect(-w/2,-h/2,w,h);
+      ctx.fillStyle=C.sheet; ctx.fillRect(-w/2+3,-h/2+3,w-6,h*.35);
+      for(let i=0;i<p.pins;i++){const px=-w/2+(i+.5)*w/p.pins; ctx.strokeStyle=C.muted; ctx.lineWidth=2; ctx.beginPath();
+        const bent=p.defect==='pin'&&i===2; ctx.moveTo(px,h/2); ctx.lineTo(bent?px+7:px,h/2+(bent?5:8)); ctx.stroke();}
+      ctx.restore();
+      const done=scan>=0 && scan>x+w*.5;
+      if(done){
+        found++; const isBad=!!p.defect; if(isBad) bad++;
+        const col=isBad?C.accent:C.ok; ctx.strokeStyle=col; ctx.lineWidth=isBad?2.4:1.5; ctx.setLineDash(isBad?[]:[4,3]);
+        ctx.strokeRect(x-6,y-6,w+12,h+18); ctx.setLineDash([]);
+        const t=isBad?(p.defect==='tilt'?'NOT SEATED .96':'BENT PIN .93'):'OK .99';
+        ctx.font='600 9px "JetBrains Mono", monospace'; const tw=ctx.measureText(t).width+8;
+        let tx=x-6; if(tx+tw>W-2) tx=W-2-tw;
+        ctx.fillStyle=col; ctx.fillRect(tx,y-18,tw,12); ctx.fillStyle='#fff'; ctx.fillText(t,tx+4,y-9);
+      }
+    });
+    if(scan>=0 && scan<W){ctx.strokeStyle=C.plan;ctx.lineWidth=2;ctx.globalAlpha=.8;ctx.beginPath();ctx.moveTo(scan,0);ctx.lineTo(scan,H);ctx.stroke();
+      ctx.globalAlpha=.08;ctx.fillStyle=C.plan;ctx.fillRect(0,0,scan,H);ctx.globalAlpha=1;}
+    if(scan<0) sum.textContent='6 connectors · press Inspect';
+    else if(scan<W) sum.textContent=`inspecting… ${found}/6`;
+    else sum.innerHTML=`6 connectors · <b>${bad} rejected</b>`;
+  }
+  function run(){cancelAnimationFrame(raf); if(reduce){scan=W+1;draw();return;} const t0=performance.now();
+    const step=now=>{scan=(now-t0)/1600*W*1.05; draw(); if(scan<W) raf=requestAnimationFrame(step); else {scan=W+1;draw();}}; raf=requestAnimationFrame(step);}
+  document.getElementById('aoi-run').addEventListener('click',run);
+  cv.addEventListener('click',run);
+  colors(); size(); draw();
+  new ResizeObserver(()=>{size();draw();}).observe(cv);
+  new MutationObserver(()=>{colors();draw();}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{colors();draw();});
+  // runs once by itself when the card scrolls into view
+  let auto=false; new IntersectionObserver(([e])=>{if(e.isIntersecting&&!auto){auto=true;setTimeout(run,400);}},{threshold:.6}).observe(cv);
 })();
 </script>
 </body>

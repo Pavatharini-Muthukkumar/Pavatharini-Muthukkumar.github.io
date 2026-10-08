@@ -165,6 +165,7 @@ details[open] summary::before{content:"−"}
 .aoi canvas{display:block;width:100%;aspect-ratio:16/9}
 .aoi figcaption{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
 .aoi figcaption b{color:var(--alert)}
+.more{display:none}
 /* pipeline diagram inside the feature card */
 .pipe{display:grid;gap:8px;align-content:start}
 .pipe .stage{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--rule);border-radius:4px;background:var(--paper)}
@@ -245,6 +246,53 @@ details[open] summary::before{content:"−"}
 footer{background:var(--ink);color:var(--paper);opacity:.95}
 footer .wrap{padding-block:18px;font-family:var(--f-mono);font-size:.74rem;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid color-mix(in srgb,var(--paper) 20%,transparent)}
 footer span{opacity:.65}
+
+/* ---------- phones: fewer, larger blocks; detail stays one tap away */
+@media (max-width:640px){
+  body{font-size:.98rem}
+  section{padding-block:40px}
+  .sec-head{margin-bottom:18px}
+  .sec-head p{font-size:.95rem}
+  .hero{padding-block:20px 28px}
+  .lede{font-size:1.08rem;margin-top:14px}
+  .role{margin-top:12px;font-size:.88rem}
+  .cta{margin-top:18px;gap:8px}
+  .btn{padding:8px 12px;font-size:.8rem}
+  .plan-head span:last-child{display:none}
+  .plan-foot{font-size:.68rem}
+  .num{padding:16px 12px}
+  .num span{font-size:.82rem}
+  .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+  .grid{gap:12px}
+  .card{padding:16px;gap:10px}
+  .card:hover{transform:none}
+  .card h3{font-size:1.5rem}
+  .card .what{font-size:.94rem}
+  .card .stack{display:none}
+  .card.feature .pipe{display:none}
+  .grid.collapsed .card:nth-child(n+6){display:none}
+  .more{display:flex;margin:16px auto 0}
+  .more[hidden]{display:none}
+  .impact{padding-top:10px}
+  .impact b{font-size:1.7rem}
+  .impact span{font-size:.84rem}
+  .aoi figcaption{font-size:.66rem}
+  .kub{padding:16px;gap:16px}
+  .kub .story div{grid-template-columns:1fr;gap:2px}
+  .kub .stack{display:none}
+  .play > div{padding:16px}
+  .samples button:nth-child(n+4){display:none}
+  .stop .body{padding-bottom:22px}
+  .stop ul{font-size:.88rem}
+  .stop li:nth-child(n+2){display:none}
+  .tools{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tool{padding:12px}
+  .tool p{font-size:.82rem;margin-top:4px}
+  .honors{gap:12px;margin-top:18px}
+  .contact img{width:120px}
+}
 </style>
 </head>
 <body>
@@ -315,7 +363,7 @@ footer span{opacity:.65}
       <button class="chip" type="button" data-f="eng" aria-pressed="false">Engineering<span class="n"></span></button>
     </div>
 
-    <div class="grid" id="cards">
+    <div class="grid collapsed" id="cards">
 
       <article class="card feature" data-tags="vision docai eng">
         <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
@@ -449,6 +497,7 @@ footer span{opacity:.65}
       </article>
 
     </div>
+    <button class="btn more" id="more" type="button">Show 6 more projects</button>
 
   </div>
 </section>
@@ -594,7 +643,11 @@ footer span{opacity:.65}
     chips.forEach(x=>x.setAttribute('aria-pressed',x===c));
     const f=c.dataset.f;
     cards.forEach(k=>k.hidden=!(f==='all'||k.dataset.tags.split(' ').includes(f)));
+    grid.classList.toggle('collapsed',f==='all'&&!opened); more.hidden=f!=='all'||opened;
   }));
+  const grid=document.getElementById('cards'), more=document.getElementById('more'); let opened=false;
+  more.textContent=`Show ${cards.length-5} more projects`;
+  more.addEventListener('click',()=>{opened=true; grid.classList.remove('collapsed'); more.hidden=true;});
 })();
 
 /* ---------- Kubera categoriser: a subset of the real merchant rules */

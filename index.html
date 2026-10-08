@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pavatharini Muthukkumar</title>
+<meta name="description" content="Pavatharini Muthukkumar, Senior AI Engineer: computer vision, document AI and GenAI systems that read engineering drawings, factory images and bank statements.">
+<meta property="og:title" content="Pavatharini Muthukkumar · Senior AI Engineer">
+<meta property="og:description" content="AI that reads drawings, inspects boards and sorts money. 7+ years across applied AI, computer vision and full-stack engineering.">
+<meta property="og:image" content="assets/photo.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%23e4572e' stroke-width='6'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='26' font-weight='700' text-anchor='middle' fill='%23e4572e'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: a drafting sheet. Title block hero with a live "takeoff" plan, then sheets of work
+   laid out like a drawing set: projects, path, toolbox, contact. */
+:root{
+  --paper:#eef3f6;   /* drafting film */
+  --sheet:#ffffff;
+  --ink:#10212f;
+  --muted:#556a7b;
+  --rule:#cbd8e1;
+  --plan:#1f5f8b;    /* blueprint ink */
+  --accent:#e4572e;  /* safety orange: what the AI found */
+  --ok:#1f8a5b;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --step--1:clamp(.78rem,.76rem + .1vw,.84rem);
+  --step-0:clamp(1rem,.97rem + .15vw,1.08rem);
+  --step-1:clamp(1.2rem,1.1rem + .45vw,1.45rem);
+  --step-2:clamp(1.6rem,1.35rem + 1.1vw,2.3rem);
+  --step-3:clamp(2.4rem,1.8rem + 2.8vw,4.2rem);
+  --step-4:clamp(3.2rem,2.2rem + 5vw,6.6rem);
+  --gutter:clamp(16px,4vw,48px);
+  --maxw:1240px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0b1f31; --sheet:#0f2a42; --ink:#e7f0f6; --muted:#97b1c6; --rule:#21486a;
+    --plan:#7cc4f0; --accent:#ff8a5c; --ok:#5fd39b; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0b1f31; --sheet:#0f2a42; --ink:#e7f0f6; --muted:#97b1c6; --rule:#21486a;
+  --plan:#7cc4f0; --accent:#ff8a5c; --ok:#5fd39b; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-size:var(--step-0); line-height:1.6;
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--plan) 7%,transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb,var(--plan) 7%,transparent) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--f-mono)}
+.label{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
+.mark{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.mark i{width:26px;height:26px;border:2.5px solid var(--accent);border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--f-mono);font-size:.8rem;color:var(--accent)}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{font-family:var(--f-mono);font-size:var(--step--1);text-decoration:none;padding:6px 10px;border-radius:4px;color:var(--muted)}
+.nav a:hover{color:var(--ink);background:color-mix(in srgb,var(--plan) 10%,transparent)}
+.theme{border:1px solid var(--rule);background:var(--sheet);color:var(--ink);border-radius:50%;width:34px;height:34px;cursor:pointer;display:grid;place-items:center;flex:none}
+.theme svg{width:16px;height:16px}
+@media (max-width:760px){.nav{display:none}.theme{margin-left:auto}}
+
+/* ---------- hero: title block + live plan */
+.hero{padding-block:clamp(28px,5vw,64px) clamp(24px,4vw,48px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero-text{container-type:inline-size;min-width:0}
+.hero h1{font-family:var(--f-display);font-weight:900;font-size:min(6.2rem,15.2cqi);line-height:.88;letter-spacing:-.01em;text-transform:uppercase}
+.hero h1 span{display:block;color:var(--plan)}
+.role{margin-top:18px;font-family:var(--f-mono);font-size:var(--step-0);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.role b{background:var(--ink);color:var(--paper);padding:3px 10px;border-radius:3px;font-weight:500}
+.lede{margin-top:18px;font-size:var(--step-1);line-height:1.45;max-width:34ch}
+.lede em{font-style:normal;color:var(--accent);font-weight:600}
+.cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:var(--f-mono);font-size:.9rem;text-decoration:none;border:1.5px solid var(--ink);padding:10px 16px;border-radius:4px;display:inline-flex;gap:8px;align-items:center;background:transparent;color:var(--ink);cursor:pointer}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink)}
+.btn.solid:hover{box-shadow:3px 3px 0 var(--ink)}
+.btn{transition:transform .15s,box-shadow .15s}
+
+.plan{position:relative;background:var(--sheet);border:1.5px solid var(--ink);border-radius:6px;overflow:hidden;box-shadow:8px 8px 0 color-mix(in srgb,var(--plan) 22%,transparent)}
+.plan canvas{display:block;width:100%;aspect-ratio:16/11;cursor:crosshair;touch-action:pan-y}
+.plan-head,.plan-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;padding:8px 12px;font-family:var(--f-mono);font-size:.74rem;color:var(--muted);border-bottom:1px solid var(--rule)}
+.plan-foot{border-bottom:0;border-top:1px solid var(--rule);align-items:center}
+.counts{display:flex;gap:14px;flex-wrap:wrap}
+.counts b{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.status{color:var(--ink)}
+.status.done{color:var(--ok);font-weight:700}
+.rerun{font-family:var(--f-mono);font-size:.74rem;border:1px solid var(--rule);background:transparent;color:var(--ink);border-radius:3px;padding:3px 8px;cursor:pointer}
+.rerun:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- numbers strip */
+.numbers{border-block:1.5px solid var(--ink);background:var(--sheet)}
+.numbers .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.num{padding:22px 18px;border-left:1px solid var(--rule)}
+.num:first-child{border-left:0}
+.num strong{display:block;font-family:var(--f-display);font-weight:800;font-size:var(--step-3);line-height:1;font-variant-numeric:tabular-nums}
+.num strong small{font-size:.45em;font-weight:600;margin-left:4px;color:var(--muted)}
+.num span{display:block;margin-top:6px;font-size:.92rem;color:var(--muted);max-width:24ch}
+@media (max-width:760px){.numbers .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.num:nth-child(3){border-left:0}.num:nth-child(n+3){border-top:1px solid var(--rule)}}
+
+/* ---------- sections */
+section{padding-block:clamp(48px,7vw,96px)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;align-items:end;margin-bottom:28px}
+.sec-head .sheet-no{grid-row:span 2;font-family:var(--f-mono);font-size:.78rem;border:1.5px solid var(--ink);padding:8px 10px;line-height:1.25;text-align:center;background:var(--sheet)}
+.sec-head .sheet-no b{display:block;font-size:1.3rem;font-family:var(--f-display);font-weight:800}
+.sec-head h2{font-family:var(--f-display);font-weight:800;font-size:var(--step-3);line-height:.95;text-transform:uppercase}
+.sec-head p{color:var(--muted);max-width:60ch}
+@media (max-width:560px){.sec-head{grid-template-columns:1fr}.sec-head .sheet-no{grid-row:auto;justify-self:start;display:flex;gap:8px;align-items:baseline;padding:4px 10px}.sec-head .sheet-no b{display:inline;font-size:1rem}}
+
+/* ---------- projects */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{font-family:var(--f-mono);font-size:.8rem;border:1.5px solid var(--rule);background:var(--sheet);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip .n{opacity:.6;margin-left:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:18px}
+.card{background:var(--sheet);border:1.5px solid var(--rule);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--ink);transform:translateY(-3px)}
+.card.feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;border-color:var(--ink)}
+@media (max-width:860px){.card.feature{grid-template-columns:1fr}}
+.card .meta{display:flex;justify-content:space-between;gap:10px;font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.card h3{font-family:var(--f-display);font-weight:800;font-size:var(--step-2);line-height:1;text-transform:uppercase}
+.card .what{color:var(--muted)}
+.impact{display:flex;align-items:baseline;gap:10px;border-top:1px dashed var(--rule);padding-top:12px}
+.impact b{white-space:nowrap;flex:none;font-family:var(--f-display);font-weight:800;font-size:2.1rem;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.impact span{font-size:.9rem;color:var(--muted)}
+.stack{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.stack li{font-family:var(--f-mono);font-size:.72rem;padding:2px 8px;border:1px solid var(--rule);border-radius:3px;color:var(--muted)}
+details{border-top:1px solid var(--rule);padding-top:10px}
+summary{cursor:pointer;font-family:var(--f-mono);font-size:.8rem;color:var(--plan);list-style:none;display:flex;align-items:center;gap:6px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid currentColor;border-radius:3px;font-size:.8rem}
+details[open] summary::before{content:"−"}
+.story{display:grid;gap:10px;margin-top:12px;font-size:.95rem}
+.story div{display:grid;grid-template-columns:86px 1fr;gap:10px}
+.story dt,.story .k{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:3px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.links a{font-family:var(--f-mono);font-size:.8rem;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:1px}
+.card[hidden]{display:none}
+
+/* pipeline diagram inside the feature card */
+.pipe{display:grid;gap:8px;align-content:start}
+.pipe .stage{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--rule);border-radius:4px;background:var(--paper)}
+.pipe .stage i{font-style:normal;font-family:var(--f-mono);font-size:.72rem;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--plan);color:var(--plan);display:grid;place-items:center}
+.pipe .stage b{display:block;font-size:.95rem}
+.pipe .stage span{display:block;font-size:.84rem;color:var(--muted)}
+.pipe .arrow{font-family:var(--f-mono);color:var(--muted);font-size:.75rem;padding-left:20px}
+
+/* ---------- Kubera playground */
+.play{margin-top:30px;background:var(--sheet);border:1.5px solid var(--ink);border-radius:6px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:860px){.play{grid-template-columns:1fr}}
+.play > div{padding:22px;min-width:0}
+.play > div + div{border-left:1px solid var(--rule)}
+@media (max-width:860px){.play > div + div{border-left:0;border-top:1px solid var(--rule)}}
+.play h3{font-family:var(--f-display);font-weight:800;font-size:var(--step-2);text-transform:uppercase;line-height:1}
+.play label{display:block;margin-top:14px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.play input{width:100%;margin-top:6px;font-family:var(--f-mono);font-size:1rem;padding:12px;border:1.5px solid var(--ink);border-radius:4px;background:var(--paper);color:var(--ink)}
+.samples{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.samples button{font-family:var(--f-mono);font-size:.74rem;border:1px dashed var(--rule);background:transparent;color:var(--ink);padding:4px 8px;border-radius:3px;cursor:pointer}
+.samples button:hover{border-color:var(--accent);color:var(--accent)}
+.verdict{display:grid;gap:12px}
+.route{display:flex;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.8rem;flex-wrap:wrap}
+.route span{padding:4px 10px;border-radius:3px;border:1px solid var(--rule);color:var(--muted)}
+.route span.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.route em{font-style:normal;color:var(--muted)}
+.result{font-family:var(--f-display);font-weight:800;font-size:var(--step-2);line-height:1.05;text-transform:uppercase}
+.result small{display:block;font-family:var(--f-body);font-weight:400;text-transform:none;font-size:.95rem;color:var(--muted);margin-top:6px}
+
+/* ---------- path (timeline) */
+.path{position:relative;display:grid;gap:0}
+.stop{display:grid;grid-template-columns:168px 24px minmax(0,1fr);gap:0 18px}
+.stop .when{white-space:nowrap;font-family:var(--f-mono);font-size:.82rem;color:var(--muted);text-align:right;padding-top:4px}
+.stop .rail{position:relative}
+.stop .rail::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:var(--rule)}
+.stop .rail::after{content:"";position:absolute;left:50%;top:6px;width:14px;height:14px;transform:translateX(-50%);border-radius:50%;background:var(--sheet);border:2.5px solid var(--plan)}
+.stop.now .rail::after{border-color:var(--accent);background:var(--accent)}
+.stop.edu .rail::after{border-radius:2px}
+.stop .body{padding-bottom:30px}
+.stop h3{font-family:var(--f-display);font-weight:800;font-size:var(--step-1);text-transform:uppercase;line-height:1.1}
+.stop .org{font-family:var(--f-mono);font-size:.82rem;color:var(--plan);margin-top:2px}
+.stop ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:.95rem;max-width:70ch}
+.stop li{margin-bottom:3px}
+.stop li b{color:var(--ink);font-weight:600}
+@media (max-width:640px){.stop{grid-template-columns:18px minmax(0,1fr)}.stop .when{grid-column:2;grid-row:1;text-align:left;padding:0}.stop .body{grid-row:2}.stop .rail{grid-row:1/span 2;grid-column:1}.stop .body{grid-column:2}}
+
+/* ---------- toolbox */
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1.5px solid var(--ink);background:var(--sheet);border-radius:6px;overflow:hidden}
+.tool{padding:20px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-width:0}
+@media (max-width:860px){.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.tools{grid-template-columns:1fr}}
+.tool h3{font-family:var(--f-mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--plan)}
+.tool p{margin-top:8px;font-size:.95rem}
+
+.honors{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px;margin-top:28px}
+.honor{border-left:3px solid var(--accent);padding:4px 0 4px 14px}
+.honor b{display:block;font-family:var(--f-display);font-weight:800;font-size:var(--step-1);text-transform:uppercase;line-height:1.1}
+.honor span{color:var(--muted);font-size:.92rem}
+
+/* ---------- contact title block */
+.contact{background:var(--ink);color:var(--paper)}
+.contact .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+.contact img{width:clamp(140px,18vw,210px);height:auto;aspect-ratio:1;border-radius:50%;border:3px solid var(--accent);background:var(--paper)}
+.contact h2{font-family:var(--f-display);font-weight:900;font-size:var(--step-3);line-height:.95;text-transform:uppercase}
+.contact p{margin-top:12px;max-width:52ch;opacity:.85}
+.tb{margin-top:22px;display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));border:1.5px solid color-mix(in srgb,var(--paper) 40%,transparent)}
+.tb > div{padding:12px 14px;border-right:1px solid color-mix(in srgb,var(--paper) 25%,transparent);border-bottom:1px solid color-mix(in srgb,var(--paper) 25%,transparent);min-width:0}
+@media (max-width:1000px){.tb{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.tb{grid-template-columns:1fr}}
+.tb .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.65}
+.tb .v{font-family:var(--f-mono);font-size:.9rem;margin-top:4px;overflow-wrap:anywhere;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tb a{color:var(--paper);text-decoration-color:var(--accent);text-underline-offset:3px}
+.copy{font-family:var(--f-mono);font-size:.7rem;background:var(--accent);color:#fff;border:0;border-radius:3px;padding:3px 8px;cursor:pointer}
+footer{background:var(--ink);color:var(--paper);opacity:.95}
+footer .wrap{padding-block:18px;font-family:var(--f-mono);font-size:.74rem;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid color-mix(in srgb,var(--paper) 20%,transparent)}
+footer span{opacity:.65}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>P</i>Pavatharini M.</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a><a href="#kubera-try">Try it</a><a href="#path">Path</a><a href="#toolbox">Toolbox</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="theme" id="theme" type="button" aria-label="Switch light or dark theme" title="Switch theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-labelledby="name">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="label">Sheet S-001 · Title block</p>
+      <h1 id="name" style="margin-top:12px">Pavatharini <span>Muthukkumar</span></h1>
+      <p class="role"><b>Senior AI Engineer</b><span>Erlangen, Germany</span><span>Open to roles from Dec 2026</span></p>
+      <p class="lede">I build AI that <em>reads what people read by hand</em>: steel drawings, circuit-board images, requirement documents and bank statements. Then I ship it to production and measure the hours it gives back.</p>
+      <div class="cta">
+        <a class="btn solid" href="#work">See the work →</a>
+        <a class="btn" href="https://github.com/Pavatharini-Muthukkumar" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/pavatharini-muthukkumar" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <figure class="plan" style="margin:0" aria-label="Interactive demo: an AI scan of a structural framing plan">
+      <div class="plan-head"><span>LEVEL 2 FRAMING PLAN · SCALE 1/8" = 1'-0"</span><span>point at the plan to steer the lens</span></div>
+      <canvas id="plan" role="img" aria-label="A structural framing plan with grid lines, columns and beams. A scanning lens marks each column, beam and grid bubble it finds."></canvas>
+      <div class="plan-foot">
+        <div class="counts"><span>columns <b id="c-col">0</b>/<span id="t-col">0</span></span><span>beams <b id="c-beam">0</b>/<span id="t-beam">0</span></span><span>grid bubbles <b id="c-grid">0</b>/<span id="t-grid">0</span></span></div>
+        <span class="status" id="status">scanning…</span>
+        <button class="rerun" id="rerun" type="button">Run takeoff again</button>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<div class="numbers" aria-label="Impact in numbers">
+  <div class="wrap">
+    <div class="num"><strong>12,500<small>h/yr</small></strong><span>estimator hours an AI takeoff gives back each year</span></div>
+    <div class="num"><strong>10<small>min</small></strong><span>per drawing set, against about 1.6 hours by hand</span></div>
+    <div class="num"><strong>960<small>h/yr</small></strong><span>inspection hours reclaimed on a factory line</span></div>
+    <div class="num"><strong>7</strong><span>AI engineers led: four engineers and three juniors</span></div>
+  </div>
+</div>
+
+<section id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sheet-no">SHEET<b>S-100</b></div>
+      <h2 id="work-h">Selected work</h2>
+      <p>Twelve projects, newest first. Open any card for the problem, the approach and the result.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chip" type="button" data-f="all" aria-pressed="true">All<span class="n"></span></button>
+      <button class="chip" type="button" data-f="vision" aria-pressed="false">Computer vision<span class="n"></span></button>
+      <button class="chip" type="button" data-f="docai" aria-pressed="false">Document AI<span class="n"></span></button>
+      <button class="chip" type="button" data-f="genai" aria-pressed="false">GenAI &amp; agents<span class="n"></span></button>
+      <button class="chip" type="button" data-f="nlp" aria-pressed="false">NLP &amp; data<span class="n"></span></button>
+      <button class="chip" type="button" data-f="eng" aria-pressed="false">Engineering<span class="n"></span></button>
+    </div>
+
+    <div class="grid" id="cards">
+
+      <article class="card feature" data-tags="vision docai eng">
+        <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+          <div class="meta"><span>2026 · Team lead</span><span>Flagship</span></div>
+          <h3>OvationAI: steel takeoff from drawings</h3>
+          <p class="what">Estimators count every column, beam, truss and brace in a structural drawing set by hand before they can price a steel job. OvationAI reads the whole PDF and returns the counts and labour-hour estimate.</p>
+          <div class="impact"><b>~90%</b><span>less effort per drawing set: about 10 minutes instead of 1.6 hours, across 35 sets a day</span></div>
+          <ul class="stack"><li>Qwen3-VL</li><li>YOLO</li><li>PyMuPDF</li><li>Shapely</li><li>Detectron2</li><li>Docling</li><li>AWS Step Functions</li><li>Lambda</li><li>Bedrock</li></ul>
+          <details>
+            <summary>How it works</summary>
+            <dl class="story">
+              <div><dt>Problem</dt><dd style="margin:0">Seven estimators spent their days counting steel on 100+ page drawing sets. Slow, and easy to miss a piece.</dd></div>
+              <div><dt>Approach</dt><dd style="margin:0">A VLM sorts the pages, tiled YOLO finds symbols, and vector geometry reads beams, columns and grid lines straight from the PDF. Dedicated readers handle trusses, bracing, knee braces and L-angles.</dd></div>
+              <div><dt>Result</dt><dd style="margin:0">Validated on 60+ real drawing sets. A reduce stage made 4.3× faster (302 s to 70 s), and every release is gated on zero regressions across all of them.</dd></div>
+            </dl>
+          </details>
+        </div>
+        <div class="pipe" aria-label="Pipeline stages">
+          <div class="stage"><i>01</i><div><b>Sort the pages</b><span>VLM labels plans, sections, schedules and details</span></div></div>
+          <div class="arrow">↓ parallel workers, one per page batch</div>
+          <div class="stage"><i>02</i><div><b>Find the symbols</b><span>Tiled YOLO at 200 DPI; grid bubbles from vector circles</span></div></div>
+          <div class="stage"><i>03</i><div><b>Read the geometry</b><span>Beam and column lines, truss spans at the sheet's own scale</span></div></div>
+          <div class="stage"><i>04</i><div><b>De-duplicate across sheets</b><span>Grid-anchored matching so a column drawn twice counts once</span></div></div>
+          <div class="stage"><i>05</i><div><b>Count and estimate</b><span>Component totals and labour hours for the estimator</span></div></div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="genai">
+        <div class="meta"><span>2026 · Team lead</span><span>RAG</span></div>
+        <h3>DuroAI: staff-training quizzes</h3>
+        <p class="what">Restaurant managers wrote Kahoot quizzes by hand so waiters would learn the menu. DuroAI writes them from the menu itself.</p>
+        <div class="impact"><b>0</b><span>quizzes written by hand: food, wine, cocktail and beer questions are generated</span></div>
+        <ul class="stack"><li>FastAPI</li><li>Titan v2 embeddings</li><li>OpenSearch</li><li>Qdrant</li><li>Bedrock</li></ul>
+        <details>
+          <summary>How it works</summary>
+          <dl class="story">
+            <div><dt>Approach</dt><dd style="margin:0">A RAG pipeline turns menu data into grounded questions and answers.</dd></div>
+            <div><dt>Result</dt><dd style="margin:0">A leaderboard keeps staff playing, and feedback teaches each person the answers they missed.</dd></div>
+          </dl>
+        </details>
+      </article>
+
+      <article class="card" data-tags="genai docai eng">
+        <div class="meta"><span>2025–26 · Personal</span><span>Live demo</span></div>
+        <h3>Kubera Finance</h3>
+        <p class="what">Bank statements in, categorised spending out. Reads PDF and Excel statements from four German banks and feeds a monthly dashboard.</p>
+        <div class="impact"><b>Hybrid</b><span>rules for well-known merchants, Gemini for the long tail; every row says which one decided</span></div>
+        <ul class="stack"><li>pdfplumber</li><li>Gemini</li><li>Supabase</li><li>Appsmith</li><li>Streamlit</li><li>pytest</li></ul>
+        <details>
+          <summary>How it works</summary>
+          <dl class="story">
+            <div><dt>Approach</dt><dd style="margin:0">One parser per bank, stable IDs so overlapping statements never double count, own-account transfers excluded by rule, recurring contracts detected on a calendar grid.</dd></div>
+            <div><dt>Result</dt><dd style="margin:0">A public demo where anyone can upload a statement and watch each booking get its category.</dd></div>
+          </dl>
+        </details>
+        <div class="links"><a href="https://kuberafinanceapp.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a><a href="https://github.com/Pavatharini-Muthukkumar/Kubera_Finance_app" target="_blank" rel="noopener">Code ↗</a><a href="#kubera-try">Try it here ↓</a></div>
+      </article>
+
+      <article class="card" data-tags="vision">
+        <div class="meta"><span>2022–25 · Panasonic</span><span>Award</span></div>
+        <h3>Automatic optical inspection</h3>
+        <p class="what">A YOLOR-based model that checks circuit boards on the production line alongside human inspectors.</p>
+        <div class="impact"><b>960 h</b><span>of inspection time reclaimed every year, and a Business Unit Director Award</span></div>
+        <ul class="stack"><li>YOLOR</li><li>Object detection</li><li>Python</li></ul>
+        <details>
+          <summary>How it works</summary>
+          <dl class="story">
+            <div><dt>Approach</dt><dd style="margin:0">Built and deployed a YOLOR detector for automatic optical inspection, and led quality initiatives with teams in Germany and Slovakia.</dd></div>
+            <div><dt>Result</dt><dd style="margin:0">Higher inspection precision and a measurable cut in manual review.</dd></div>
+          </dl>
+        </details>
+      </article>
+
+      <article class="card" data-tags="nlp">
+        <div class="meta"><span>2022 · M.Tech residency</span><span>NLP</span></div>
+        <h3>Automotive requirements classifier</h3>
+        <p class="what">Multi-label classification of automotive requirements so engineers can route them to the right teams.</p>
+        <div class="impact"><b>80%</b><span>accuracy on 9,000+ unique requirements; presented to Panasonic Europe's leadership</span></div>
+        <ul class="stack"><li>Multi-label classification</li><li>NLP pipelines</li><li>Python</li></ul>
+      </article>
+
+      <article class="card" data-tags="nlp">
+        <div class="meta"><span>2023–25 · Panasonic</span><span>NLP</span></div>
+        <h3>Requirements analysis tooling</h3>
+        <p class="what">Tools that read technical requirement documents in system engineering and flag what needs a human.</p>
+        <div class="impact"><b>Faster</b><span>reviews: engineers start from a pre-sorted list instead of raw documents</span></div>
+        <ul class="stack"><li>Python</li><li>NLP pipelines</li></ul>
+      </article>
+
+      <article class="card" data-tags="nlp">
+        <div class="meta"><span>2023–25 · Panasonic</span><span>Data</span></div>
+        <h3>Predictive maintenance</h3>
+        <p class="what">Statistical models on production logs that spot early wear before a machine fails.</p>
+        <div class="impact"><b>Early</b><span>correction instead of unplanned downtime</span></div>
+        <ul class="stack"><li>Statistical modelling</li><li>Production logs</li><li>Python</li></ul>
+      </article>
+
+      <article class="card" data-tags="genai">
+        <div class="meta"><span>2025 · Personal</span><span>Agents</span></div>
+        <h3>Agentic AI with MCP and A2A</h3>
+        <p class="what">Autonomous agents that use tools through the Model Context Protocol and hand work to each other over Agent-to-Agent messaging.</p>
+        <div class="impact"><b>MCP</b><span>tool interoperability, built after Google's agents course</span></div>
+        <ul class="stack"><li>MCP</li><li>A2A</li><li>Google Agents course</li></ul>
+      </article>
+
+      <article class="card" data-tags="eng">
+        <div class="meta"><span>2018–21 · Infosys</span><span>Full stack</span></div>
+        <h3>European logistics platform</h3>
+        <p class="what">Large-scale logistics software for a European client, built in Angular and .NET Core microservices.</p>
+        <div class="impact"><b>60%+</b><span>lower latency on complex searches after moving retrieval to Elasticsearch</span></div>
+        <ul class="stack"><li>Angular</li><li>.NET Core</li><li>Elasticsearch</li></ul>
+        <details>
+          <summary>How it works</summary>
+          <dl class="story">
+            <div><dt>Also</dt><dd style="margin:0">Set up the EU acceptance-test environment with automated schema migrations; 100% on-time delivery with international Scrum teams.</dd></div>
+          </dl>
+        </details>
+      </article>
+
+      <article class="card" data-tags="vision">
+        <div class="meta"><span>2022 · M.Tech capstone</span><span>Deep learning</span></div>
+        <h3>Automatic image captioning</h3>
+        <p class="what">A CNN encoder and RNN decoder that writes a sentence describing a photo.</p>
+        <div class="impact"><b>8.43</b><span>CGPA out of 10, M.Tech in Data Science at BITS Pilani</span></div>
+        <ul class="stack"><li>CNN encoder</li><li>RNN decoder</li><li>Deep learning</li></ul>
+      </article>
+
+      <article class="card" data-tags="nlp eng">
+        <div class="meta"><span>2018 · B.E. project</span><span>Optimisation</span></div>
+        <h3>Mobile data collection in sensor networks</h3>
+        <p class="what">Particle Swarm Optimisation picks cluster heads and Fruit Fly Optimisation plans the collector's path.</p>
+        <div class="impact"><b>Longer</b><span>network lifetime with lower latency and overhead</span></div>
+        <ul class="stack"><li>Particle Swarm Optimisation</li><li>Fruit Fly Optimisation</li></ul>
+      </article>
+
+      <article class="card" data-tags="eng genai">
+        <div class="meta"><span>2026 · Team lead</span><span>MLOps</span></div>
+        <h3>Shipping AI safely</h3>
+        <p class="what">The engineering behind the models: CI/CD, Dockerised Lambda images, regression sweeps and GPU sizing for on-prem clients.</p>
+        <div class="impact"><b>0</b><span>regressions allowed: every release is checked against every validated drawing set</span></div>
+        <ul class="stack"><li>GitHub Actions</li><li>Docker</li><li>uv</li><li>ruff</li><li>pyright</li><li>pytest</li></ul>
+      </article>
+
+    </div>
+
+    <div class="play" id="kubera-try" aria-labelledby="play-h">
+      <div>
+        <p class="label">Kubera Finance · try the categoriser</p>
+        <h3 id="play-h" style="margin-top:8px">Type a bank booking</h3>
+        <p style="margin-top:10px;color:var(--muted)">Kubera checks a short list of merchant rules first. Anything the rules don't know goes to Gemini. Try a well-known shop, then something only a person would recognise.</p>
+        <label for="booking">Booking text</label>
+        <input id="booking" type="text" value="REWE Markt Erlangen" autocomplete="off" spellcheck="false">
+        <div class="samples" aria-label="Examples">
+          <button type="button">NETFLIX.COM</button><button type="button">dm-drogerie markt</button><button type="button">DB Vertrieb GmbH</button><button type="button">Biergarten Entla's Keller</button><button type="button">Zahnarztpraxis Dr. Huber</button>
+        </div>
+      </div>
+      <div class="verdict" aria-live="polite">
+        <div class="route"><span id="r-rule">Merchant rule</span><em>→</em><span id="r-llm">Gemini</span></div>
+        <p class="result" id="result">Groceries → Supermarket<small>Decided by rule: free, instant, always the same answer.</small></p>
+        <p style="color:var(--muted);font-size:.92rem">This box runs a few of Kubera's real rules in your browser. The <a href="https://kuberafinanceapp.streamlit.app/" target="_blank" rel="noopener">live demo</a> runs the whole pipeline, Gemini included, on a statement you upload.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="path" aria-labelledby="path-h" style="background:var(--sheet);border-block:1.5px solid var(--ink)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sheet-no">SHEET<b>S-200</b></div>
+      <h2 id="path-h">The path</h2>
+      <p>From full-stack engineering in India to applied AI in Germany. Round markers are roles, square ones are degrees.</p>
+    </div>
+    <div class="path">
+      <div class="stop now"><div class="when">Apr 2026 – Nov 2026</div><div class="rail"></div><div class="body">
+        <h3>Senior AI Engineer</h3><p class="org">AI for construction estimation · team lead</p>
+        <ul><li>Led <b>4 AI engineers and 3 junior AI engineers</b>: technical direction, every pull request reviewed, sprint planning.</li><li>Built <b>OvationAI</b> and <b>DuroAI</b> from prototype to AWS production and on-prem deployment.</li></ul>
+      </div></div>
+      <div class="stop"><div class="when">May 2025 – Mar 2026</div><div class="rail"></div><div class="body">
+        <h3>Independent AI researcher &amp; developer</h3><p class="org">Self-directed · Germany</p>
+        <ul><li>Agentic AI with <b>MCP</b> and <b>A2A</b>; built <b>Kubera Finance</b>.</li><li>German <b>A2</b> certified (BFZ Nuremberg), <b>B1</b> in progress.</li></ul>
+      </div></div>
+      <div class="stop"><div class="when">Dec 2022 – Apr 2025</div><div class="rail"></div><div class="body">
+        <h3>Data Scientist</h3><p class="org">Panasonic Industrial Devices Europe · Lüneburg, Germany</p>
+        <ul><li>YOLOR inspection reclaiming <b>960 labour hours a year</b>; <b>Business Unit Director Award</b>.</li><li>NLP requirement tools, predictive maintenance, data work across Germany, Slovakia and Austria.</li></ul>
+      </div></div>
+      <div class="stop"><div class="when">Apr 2022 – Sep 2022</div><div class="rail"></div><div class="body">
+        <h3>Data Science Researcher</h3><p class="org">Panasonic Industrial Devices Europe · M.Tech residency</p>
+        <ul><li>Classified <b>9,000+</b> automotive requirements at <b>80%</b> accuracy.</li></ul>
+      </div></div>
+      <div class="stop edu"><div class="when">2020 – 2022</div><div class="rail"></div><div class="body">
+        <h3>M.Tech, Data Science &amp; Engineering</h3><p class="org">BITS Pilani · CGPA 8.43/10</p>
+      </div></div>
+      <div class="stop"><div class="when">Jun 2018 – Dec 2021</div><div class="rail"></div><div class="body">
+        <h3>Senior Systems Engineer</h3><p class="org">Infosys · Kerala, India</p>
+        <ul><li>Logistics platform in Angular and .NET Core; Elasticsearch cut search latency by <b>60%+</b>.</li></ul>
+      </div></div>
+      <div class="stop edu"><div class="when">2014 – 2018</div><div class="rail"></div><div class="body" style="padding-bottom:0">
+        <h3>B.E., Computer Science &amp; Engineering</h3><p class="org">St. Joseph's Institute of Technology, Chennai · CGPA 8.09/10</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="toolbox" aria-labelledby="tool-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sheet-no">SHEET<b>S-300</b></div>
+      <h2 id="tool-h">Toolbox</h2>
+      <p>What I reach for, grouped by the job it does.</p>
+    </div>
+    <div class="tools">
+      <div class="tool"><h3>See</h3><p>YOLO, YOLOR, Detectron2, CNNs, Qwen3-VL and other VLMs, PyTorch, TensorFlow</p></div>
+      <div class="tool"><h3>Read documents</h3><p>PyMuPDF vector geometry, Shapely, pdfplumber, Docling, table parsing, OCR</p></div>
+      <div class="tool"><h3>Generate &amp; retrieve</h3><p>RAG, AWS Bedrock (Nova, Titan, Qwen), Gemini, OpenSearch, Qdrant, MCP, A2A, Ollama</p></div>
+      <div class="tool"><h3>Ship</h3><p>AWS Lambda, Step Functions, S3, ECR, Docker, GitHub Actions, MLflow, uv, pytest, pyright</p></div>
+      <div class="tool"><h3>Build</h3><p>Python (expert), FastAPI, SQL and PostgreSQL, Supabase, .NET Core, Angular, Elasticsearch</p></div>
+      <div class="tool"><h3>Lead</h3><p>Team of 7, code review, sprint planning, client requirements, infrastructure sizing</p></div>
+    </div>
+    <div class="honors">
+      <div class="honor"><b>Business Unit Director Award</b><span>Panasonic, 2024: AI-driven quality control</span></div>
+      <div class="honor"><b>M.Tech, BITS Pilani</b><span>Data Science &amp; Engineering, CGPA 8.43</span></div>
+      <div class="honor"><b>Languages</b><span>English (fluent), Tamil (native), German A2, B1 in progress</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <img src="assets/photo.webp" alt="Portrait of Pavatharini Muthukkumar" width="210" height="210">
+    <div>
+      <h2 id="contact-h">Let's build the next one</h2>
+      <p>I'm looking for applied AI roles in Germany from December 2026: computer vision, document AI or GenAI that has to work in production.</p>
+      <div class="tb">
+        <div><div class="k">Email</div><div class="v"><span id="mail">pavatharinivignesh@gmail.com</span><button class="copy" id="copy" type="button">Copy</button></div></div>
+        <div><div class="k">LinkedIn</div><div class="v"><a href="https://linkedin.com/in/pavatharini-muthukkumar" target="_blank" rel="noopener">pavatharini-muthukkumar</a></div></div>
+        <div><div class="k">GitHub</div><div class="v"><a href="https://github.com/Pavatharini-Muthukkumar" target="_blank" rel="noopener">Pavatharini-Muthukkumar</a></div></div>
+        <div><div class="k">Based in</div><div class="v">Erlangen, Germany</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Pavatharini Muthukkumar</span><span>Drawn on a 24 px grid · hosted on GitHub Pages</span></div></footer>
+
+<script>
+/* ---------- theme toggle (remembered per visitor) */
+(function(){
+  const root=document.documentElement, btn=document.getElementById('theme');
+  try{const t=localStorage.getItem('theme'); if(t) root.dataset.theme=t;}catch(e){}
+  btn.addEventListener('click',()=>{
+    const dark=root.dataset.theme? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark';
+    try{localStorage.setItem('theme',root.dataset.theme);}catch(e){}
+  });
+})();
+
+/* ---------- project filters */
+(function(){
+  const chips=[...document.querySelectorAll('.chip')], cards=[...document.querySelectorAll('#cards .card')];
+  chips.forEach(c=>{const f=c.dataset.f; c.querySelector('.n').textContent=f==='all'?cards.length:cards.filter(k=>k.dataset.tags.split(' ').includes(f)).length;});
+  chips.forEach(c=>c.addEventListener('click',()=>{
+    chips.forEach(x=>x.setAttribute('aria-pressed',x===c));
+    const f=c.dataset.f;
+    cards.forEach(k=>k.hidden=!(f==='all'||k.dataset.tags.split(' ').includes(f)));
+  }));
+})();
+
+/* ---------- Kubera categoriser: a subset of the real merchant rules */
+(function(){
+  const rules=[
+    [/\b(rewe|edeka|aldi|lidl|netto|penny|kaufland)\b/i,'Groceries','Supermarket'],
+    [/\b(dm-drogerie|dm drogerie|rossmann|m[uü]ller drogerie)\b/i,'Groceries','Drugstore'],
+    [/\b(netflix|spotify|disney\+?|prime video)\b/i,'Leisure','Subscription'],
+    [/\b(db vertrieb|deutsche bahn|vgn|mvg|bvg)\b/i,'Mobility','Public Transport'],
+    [/\b(amazon|zalando|otto)\b/i,'Shopping','Online Shopping'],
+    [/\b(shell|aral|esso|jet tankstelle|total)\b/i,'Car','Fuel'],
+    [/\b(apotheke|pharmacy)\b/i,'Health','Pharmacy'],
+    [/\b(ikea)\b/i,'Housing','Furniture'],
+    [/\b(mcdonald|burger king|lieferando)\b/i,'Dining Out','Fast Food'],
+    [/\b(vodafone|telekom|o2)\b/i,'Housing','Internet & Phone'],
+  ];
+  const input=document.getElementById('booking'), out=document.getElementById('result'),
+        rr=document.getElementById('r-rule'), rl=document.getElementById('r-llm');
+  function run(){
+    const t=input.value.trim();
+    if(!t){out.innerHTML='Waiting for a booking<small>Type any text from a bank statement.</small>';rr.className='';rl.className='';return;}
+    const hit=rules.find(r=>r[0].test(t));
+    if(hit){
+      rr.className='on'; rl.className='';
+      out.innerHTML=`${hit[1]} → ${hit[2]}<small>Decided by rule: free, instant, always the same answer.</small>`;
+    }else{
+      rr.className=''; rl.className='on';
+      out.innerHTML='Sent to Gemini<small>No rule knows this one. Kubera batches it with others, asks Gemini, and accepts only a category from its fixed table of 61. Try it in the live demo.</small>';
+    }
+  }
+  input.addEventListener('input',run);
+  document.querySelectorAll('.samples button').forEach(b=>b.addEventListener('click',()=>{input.value=b.textContent;run();input.focus();}));
+  run();
+})();
+
+/* ---------- copy email */
+(function(){
+  const b=document.getElementById('copy'), m=document.getElementById('mail');
+  b.addEventListener('click',()=>{
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600);};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(m);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';};
+    try{navigator.clipboard.writeText(m.textContent).then(done,fallback);}catch(e){fallback();}
+  });
+})();
+
+/* ---------- hero: a framing plan and a scanning lens that does the takeoff */
+(function(){
+  const cv=document.getElementById('plan'), ctx=cv.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ui={col:document.getElementById('c-col'),beam:document.getElementById('c-beam'),grid:document.getElementById('c-grid'),
+            tcol:document.getElementById('t-col'),tbeam:document.getElementById('t-beam'),tgrid:document.getElementById('t-grid'),
+            status:document.getElementById('status')};
+  let W=0,H=0,els=[],lens={x:0,y:0,r:60},mouse=null,t0=performance.now(),doneAt=null,C={};
+  const SECTIONS=['W14x22','W16x26','W12x19','W18x35','W10x12','W21x44'];
+
+  function colors(){const s=getComputedStyle(document.documentElement);
+    C={sheet:s.getPropertyValue('--sheet').trim(),ink:s.getPropertyValue('--ink').trim(),plan:s.getPropertyValue('--plan').trim(),
+       accent:s.getPropertyValue('--accent').trim(),muted:s.getPropertyValue('--muted').trim(),rule:s.getPropertyValue('--rule').trim()};}
+
+  function build(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    W=cv.clientWidth; H=cv.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    els=[];
+    const mx=W*.13, my=H*.17, nx=6, ny=4;
+    const xs=[...Array(nx)].map((_,i)=>mx+i*(W-mx-W*.05)/(nx-1));
+    const ys=[...Array(ny)].map((_,i)=>my+i*(H-my-H*.08)/(ny-1));
+    const br=Math.max(9,Math.min(W,H)*.032);
+    xs.forEach((x,i)=>els.push({k:'grid',x,y:my-br*2.6,r:br,label:String(i+1),line:[x,my-br*1.6,x,H-H*.04]}));
+    ys.forEach((y,j)=>els.push({k:'grid',x:mx-br*2.6,y,r:br,label:'ABCD'[j],line:[mx-br*1.6,y,W-W*.025,y]}));
+    const skip=new Set(['5,0','0,3']);   // an L-shaped building: two corners empty
+    const has=(i,j)=>!skip.has(i+','+j);
+    xs.forEach((x,i)=>ys.forEach((y,j)=>{ if(has(i,j)) els.push({k:'col',x,y,s:Math.max(6,br*.6),label:'W10x33',conf:(.9+((i*7+j*3)%9)/100).toFixed(2)}); }));
+    let n=0;
+    ys.forEach((y,j)=>{for(let i=0;i<nx-1;i++) if(has(i,j)&&has(i+1,j)) els.push({k:'beam',x1:xs[i],y1:y,x2:xs[i+1],y2:y,label:SECTIONS[(n++)%SECTIONS.length]});});
+    xs.forEach((x,i)=>{for(let j=0;j<ny-1;j++) if(has(i,j)&&has(i,j+1)&&(i%2===0||j===1)) els.push({k:'beam',x1:x,y1:ys[j],x2:x,y2:ys[j+1],label:SECTIONS[(n++)%SECTIONS.length]});});
+    els.forEach(e=>{ if(e.k==='beam'){e.x=(e.x1+e.x2)/2;e.y=(e.y1+e.y2)/2;} e.seen=reduce; });
+    lens.r=Math.max(44,Math.min(W,H)*.17);
+    const tot=k=>els.filter(e=>e.k===k).length;
+    ui.tcol.textContent=tot('col'); ui.tbeam.textContent=tot('beam'); ui.tgrid.textContent=tot('grid');
+    joists=[]; for(let i=0;i<nx-1;i++) for(let j=0;j<ny-1;j++){ if(!(has(i,j)&&has(i+1,j)&&has(i,j+1)&&has(i+1,j+1))) continue;
+      for(let q=1;q<6;q++){const x=xs[i]+(xs[i+1]-xs[i])*q/6; joists.push([x,ys[j]+3,x,ys[j+1]-3]);} }
+  }
+  let joists=[];
+
+  function near(e){
+    if(e.k==='beam'){ // distance from lens to the beam segment
+      const dx=e.x2-e.x1, dy=e.y2-e.y1, L=dx*dx+dy*dy, t=Math.max(0,Math.min(1,((lens.x-e.x1)*dx+(lens.y-e.y1)*dy)/L));
+      return Math.hypot(lens.x-(e.x1+t*dx),lens.y-(e.y1+t*dy))<lens.r*.55 && Math.hypot(lens.x-e.x,lens.y-e.y)<lens.r*1.05;
+    }
+    if(e.k==='grid'){ // a bubble is read with its dashed grid line, like the real detector
+      const [x1,y1,x2,y2]=e.line, dx=x2-x1, dy=y2-y1, t=Math.max(0,Math.min(1,((lens.x-x1)*dx+(lens.y-y1)*dy)/(dx*dx+dy*dy)));
+      return Math.hypot(lens.x-(x1+t*dx),lens.y-(y1+t*dy))<lens.r*.5;
+    }
+    return Math.hypot(lens.x-e.x,lens.y-e.y)<lens.r;
+  }
+
+  function tag(x,y,text,col){
+    ctx.font='600 10px "JetBrains Mono", monospace';
+    const w=ctx.measureText(text).width+8;
+    if(x+w>W-4) x=Math.max(4,x-w-28); if(y-13<2) y=15;
+    ctx.fillStyle=col; ctx.fillRect(x,y-13,w,13);
+    ctx.fillStyle='#fff'; ctx.fillText(text,x+4,y-3.5);
+  }
+  function brackets(x,y,w,h,col){
+    const c=Math.min(8,w/3,h/3); ctx.strokeStyle=col; ctx.lineWidth=1.6; ctx.beginPath();
+    [[x,y,1,1],[x+w,y,-1,1],[x,y+h,1,-1],[x+w,y+h,-1,-1]].forEach(([px,py,sx,sy])=>{ctx.moveTo(px+sx*c,py);ctx.lineTo(px,py);ctx.lineTo(px,py+sy*c);});
+    ctx.stroke();
+  }
+
+  function draw(now){
+    ctx.fillStyle=C.sheet; ctx.fillRect(0,0,W,H);
+    // joists: thin, never counted
+    ctx.strokeStyle=C.rule; ctx.lineWidth=1; ctx.setLineDash([]);
+    ctx.beginPath(); joists.forEach(([a,b,c,d])=>{ctx.moveTo(a,b);ctx.lineTo(c,d);}); ctx.stroke();
+    // grid lines: dash-dot, like the real drawings
+    ctx.setLineDash([16,4,2,4]); ctx.lineWidth=1; ctx.strokeStyle=C.muted;
+    els.filter(e=>e.k==='grid').forEach(e=>{ctx.beginPath();ctx.moveTo(e.line[0],e.line[1]);ctx.lineTo(e.line[2],e.line[3]);ctx.stroke();});
+    ctx.setLineDash([]);
+    // beams
+    els.filter(e=>e.k==='beam').forEach(e=>{
+      ctx.strokeStyle=e.seen?C.accent:C.plan; ctx.lineWidth=e.seen?3:2;
+      ctx.beginPath(); ctx.moveTo(e.x1,e.y1); ctx.lineTo(e.x2,e.y2); ctx.stroke();
+      if(e.seen && W>420 && Math.hypot(lens.x-e.x,lens.y-e.y)<lens.r*1.8){ const h=e.y1===e.y2; ctx.save(); ctx.font='500 9px "JetBrains Mono", monospace'; ctx.fillStyle=C.accent;
+        if(h) ctx.fillText(e.label,e.x-ctx.measureText(e.label).width/2,e.y-5); else {ctx.translate(e.x-5,e.y+ctx.measureText(e.label).width/2);ctx.rotate(-Math.PI/2);ctx.fillText(e.label,0,0);} ctx.restore(); }
+    });
+    // columns: small I shapes
+    els.filter(e=>e.k==='col').forEach(e=>{
+      const s=e.s; ctx.fillStyle=e.seen?C.accent:C.ink;
+      ctx.fillRect(e.x-s,e.y-s,2*s,s*.45); ctx.fillRect(e.x-s,e.y+s*.55,2*s,s*.45); ctx.fillRect(e.x-s*.18,e.y-s,s*.36,2*s);
+      if(e.seen){ brackets(e.x-s-5,e.y-s-5,2*s+10,2*s+10,C.accent); if(W>520 && Math.hypot(lens.x-e.x,lens.y-e.y)<lens.r*1.5) tag(e.x+s+4,e.y-s-4,'w_col '+e.conf,C.accent); }
+    });
+    // grid bubbles
+    els.filter(e=>e.k==='grid').forEach(e=>{
+      ctx.lineWidth=1.5; ctx.strokeStyle=e.seen?C.accent:C.ink; ctx.fillStyle=C.sheet;
+      ctx.beginPath(); ctx.arc(e.x,e.y,e.r,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.fillStyle=e.seen?C.accent:C.ink; ctx.font=`700 ${Math.round(e.r*1.05)}px "JetBrains Mono", monospace`;
+      ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(e.label,e.x,e.y+1); ctx.textAlign='start'; ctx.textBaseline='alphabetic';
+      if(e.seen) brackets(e.x-e.r-4,e.y-e.r-4,2*e.r+8,2*e.r+8,C.accent);
+    });
+    // lens
+    if(!reduce && doneAt===null || mouse){
+      ctx.save(); ctx.strokeStyle=C.accent; ctx.lineWidth=1.5; ctx.setLineDash([3,4]);
+      ctx.beginPath(); ctx.arc(lens.x,lens.y,lens.r,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+      ctx.globalAlpha=.08; ctx.fillStyle=C.accent; ctx.fill(); ctx.globalAlpha=1;
+      ctx.beginPath(); ctx.moveTo(lens.x-8,lens.y); ctx.lineTo(lens.x+8,lens.y); ctx.moveTo(lens.x,lens.y-8); ctx.lineTo(lens.x,lens.y+8); ctx.stroke();
+      // sweep line
+      const a=(now/700)%(Math.PI*2); ctx.globalAlpha=.5; ctx.beginPath(); ctx.moveTo(lens.x,lens.y); ctx.lineTo(lens.x+Math.cos(a)*lens.r,lens.y+Math.sin(a)*lens.r); ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  function update(now){
+    if(mouse){ lens.x+= (mouse.x-lens.x)*.25; lens.y+=(mouse.y-lens.y)*.25; }
+    else { const t=(now-t0)/1000; lens.x=W*(.5+.42*Math.sin(t*.9)); lens.y=H*(.52+.36*Math.sin(t*1.37+1)); }
+    els.forEach(e=>{ if(!e.seen && near(e)) e.seen=true; });
+    const c=k=>els.filter(e=>e.k===k&&e.seen).length;
+    ui.col.textContent=c('col'); ui.beam.textContent=c('beam'); ui.grid.textContent=c('grid');
+    if(doneAt===null && els.every(e=>e.seen)){ doneAt=now; }
+    if(doneAt!==null){ ui.status.textContent='takeoff complete ✓'; ui.status.classList.add('done'); }
+    else { ui.status.textContent='scanning…'; ui.status.classList.remove('done'); }
+  }
+
+  function frame(now){ update(now); draw(now); if(visible) requestAnimationFrame(frame); else running=false; }
+  let visible=true, running=false;
+  function start(){ if(!running && !reduce){ running=true; requestAnimationFrame(frame);} }
+
+  colors(); build();
+  if(reduce){ update(performance.now()); draw(0); } else start();
+
+  cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect(); mouse={x:e.clientX-r.left,y:e.clientY-r.top}; if(reduce){update(0);draw(0);}});
+  cv.addEventListener('pointerleave',()=>{mouse=null; t0=performance.now()-((Math.asin(Math.max(-1,Math.min(1,(lens.x/W-.5)/.42))))/.9)*1000;});
+  document.getElementById('rerun').addEventListener('click',()=>{ els.forEach(e=>e.seen=false); doneAt=null; t0=performance.now(); if(reduce){els.forEach(e=>e.seen=true);update(0);draw(0);} });
+  new ResizeObserver(()=>{ const seen=els.map(e=>e.seen); build(); if(seen.length===els.length) els.forEach((e,i)=>e.seen=seen[i]); if(reduce) draw(0); }).observe(cv);
+  new MutationObserver(()=>{colors(); if(reduce) draw(0);}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{colors(); if(reduce) draw(0);});
+  new IntersectionObserver(([en])=>{ visible=en.isIntersecting; if(visible) start(); }).observe(cv);
+  document.fonts && document.fonts.ready.then(()=>{ if(reduce) draw(0); });
+})();
+</script>
+</body>
+</html>

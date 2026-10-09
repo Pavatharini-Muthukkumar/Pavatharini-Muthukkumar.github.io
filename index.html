@@ -550,7 +550,7 @@ footer span{opacity:.65}
             <summary>How it works</summary>
             <dl class="story">
               <div><dt>Problem</dt><dd style="margin:0">Seven estimators performed the takeoff manually: time-consuming and prone to omissions.</dd></div>
-              <div><dt>Approach</dt><dd style="margin:0">A vision-language model classifies the pages, tiled YOLO detects symbols, and vector geometry extracts beams, columns and grid lines directly from the PDF. Trusses, bracing, knee braces and L-angles are handled by an agentic workflow: each section view is sent to Qwen3.6 together with a component card that describes how the component appears in a section; geometric rules then validate the count, and every mismatch is returned to Qwen3.6 for re-validation.</dd></div>
+              <div><dt>Approach</dt><dd style="margin:0">A vision-language model classifies the pages, tiled YOLO detects symbols, and vector geometry extracts beams, columns and grid lines directly from the PDF. Trusses and horizontal and vertical bracing are counted with geometric rules. L-angles, knee braces, embed angles, loose plates and bent plates are handled by an agentic workflow: each section is sent to Qwen3.6 together with a component card that describes how the component appears in a section; geometric rules then validate the count, and every mismatch is returned to Qwen3.6 for re-validation.</dd></div>
               <div><dt>Result</dt><dd style="margin:0">Validated on 60+ real drawing sets. Reduce stage accelerated 4.3× (302 s → 70 s); every release requires zero regressions across all validated sets.</dd></div>
             </dl>
           </details>
@@ -559,8 +559,8 @@ footer span{opacity:.65}
           <div class="stage"><i>01</i><div><b>Page classification</b><span>A VLM labels plans, sections, schedules and details</span></div></div>
           <div class="arrow">↓ parallel workers, one per page batch</div>
           <div class="stage"><i>02</i><div><b>Symbol detection</b><span>Tiled YOLO at 200 DPI; grid bubbles from vector geometry</span></div></div>
-          <div class="stage"><i>03</i><div><b>Geometry extraction</b><span>Beam and column lines, truss spans at each sheet's scale</span></div></div>
-          <div class="stage"><i>04</i><div><b>Component agent</b><span>Qwen3.6 with component cards; geometric rules validate, mismatches are re-validated</span></div></div>
+          <div class="stage"><i>03</i><div><b>Rule-based geometry</b><span>Beams, columns, trusses, horizontal and vertical bracing at each sheet's scale</span></div></div>
+          <div class="stage"><i>04</i><div><b>Component agent</b><span>Qwen3.6 with component cards for L-angles, knee braces, embed angles and plates; rules validate, mismatches are re-validated</span></div></div>
           <div class="stage"><i>05</i><div><b>De-duplication and estimate</b><span>Grid-anchored matching across sheets; totals and labour hours</span></div></div>
         </div>
       </article>
@@ -712,7 +712,7 @@ footer span{opacity:.65}
         <h3>Process a drawing set</h3>
         <ol class="how">
           <li><b>Page classification:</b> a vision-language model distinguishes plans, schedules, sections and general notes.</li>
-          <li><b>Component recognition:</b> symbols are detected on plans; each section view is sent to Qwen3.6 with a component card (e.g. knee brace, L-angle) describing how to identify it.</li>
+          <li><b>Component recognition:</b> geometric rules count beams, columns, trusses and bracing; each section is sent to Qwen3.6 with a component card (L-angle, knee brace, embed angle, loose or bent plate) describing how to identify it.</li>
           <li><b>Validation:</b> geometric rules check every count, mismatches are returned to Qwen3.6 for re-validation, and components shown on several sheets are counted once.</li>
         </ol>
         <p class="note">The interactive drawing at the <a href="#top">top of this page</a> illustrates symbol detection on a framing plan.</p>
@@ -1186,11 +1186,11 @@ const GEMINI_RECORDED={
     ['S-001','General notes','skip','skipped: notes'],
     ['S-101','Foundation plan','read','count columns'],
     ['S-201','Level 2 framing plan','read','count beams & columns'],
-    ['S-301','Roof framing plan','read','count joists & beams'],
+    ['S-301','Roof framing plan','read','rules: beams, horizontal bracing'],
     ['S-401','Column schedule','read','read sizes'],
-    ['S-501','Building sections','read','agent: bracing'],
-    ['S-601','Truss elevations','read','measure trusses'],
-    ['S-701','Connection details','read','agent: knee braces, L-angles'],
+    ['S-501','Building sections','read','agent: L-angles, embed angles'],
+    ['S-601','Truss and bracing elevations','read','rules: trusses, vertical bracing'],
+    ['S-701','Connection details','read','agent: knee braces, plates'],
   ];
   const box=document.getElementById('sheets'), sum=document.getElementById('sort-sum'), btn=document.getElementById('sort');
   const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();

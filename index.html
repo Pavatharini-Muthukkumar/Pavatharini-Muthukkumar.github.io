@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Pavatharini Muthukkumar</title>
-<meta name="description" content="Pavatharini Muthukkumar, Senior AI Engineer: computer vision, document AI and GenAI systems that read engineering drawings, factory images and bank statements.">
+<meta name="description" content="Pavatharini Muthukkumar, Senior AI Engineer in Erlangen: computer vision, document AI and GenAI systems in production. Eligible to work in Germany, available from December 2026.">
 <meta property="og:title" content="Pavatharini Muthukkumar · Senior AI Engineer">
-<meta property="og:description" content="AI that reads drawings, inspects boards and sorts money. 7+ years across applied AI, computer vision and full-stack engineering.">
+<meta property="og:description" content="Senior AI Engineer: computer vision, document AI and GenAI in production. 7+ years in applied AI and software engineering.">
 <meta property="og:image" content="assets/photo.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%230b7a75' stroke-width='6'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='26' font-weight='700' text-anchor='middle' fill='%230b7a75'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/fonts.css">
@@ -401,8 +401,12 @@ footer span{opacity:.65}
   .navcta{display:none}
   .hide-sm{display:none}
   .facts li{font-size:.7rem}
-  .ways{grid-template-columns:1fr}
-  .offer{padding:16px}
+  .ways{display:none}
+  .offer{padding:16px;gap:8px}
+  .offer > p:not(.label){display:none}
+  .offer h3{font-size:1.4rem}
+  .proof b{font-size:1.6rem}
+  .offers{gap:12px}
   .dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;display:block;text-align:center;background:var(--accent);color:var(--on-accent);font-family:var(--f-mono);font-size:.9rem;text-decoration:none;padding:13px;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
   .dock[hidden]{display:none}
   footer .wrap{padding-bottom:76px}
@@ -416,9 +420,9 @@ footer span{opacity:.65}
   <div class="wrap">
     <a class="mark" href="#top"><i>P</i>Pavatharini M.</a>
     <nav class="nav" aria-label="Sections">
-      <a href="#work">Work</a><a href="#try">Try it</a><a href="#path">Path</a><a href="#toolbox">Toolbox</a>
+      <a href="#work">Projects</a><a href="#try">Try it</a><a href="#path">Career</a><a href="#toolbox">Skills</a>
     </nav>
-    <a class="btn solid navcta" href="#contact">Contact me</a>
+    <a class="btn solid navcta" href="#contact">Contact</a>
     <button class="theme" id="theme" type="button" aria-label="Switch light or dark theme" title="Switch theme">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
     </button>
@@ -430,27 +434,27 @@ footer span{opacity:.65}
 <section class="hero" aria-labelledby="name">
   <div class="wrap">
     <div class="hero-text">
-      <p class="label">Senior AI Engineer · vision, documents, GenAI</p>
+      <p class="label">Senior AI Engineer · Computer Vision &amp; Document AI</p>
       <h1 id="name" style="margin-top:12px">Pavatharini <span>Muthukkumar</span></h1>
-      <p class="lede">I turn slow, manual work on <em>drawings, documents and inspection images</em> into AI that runs in production, and I measure the hours it saves.</p>
+      <p class="lede">I develop AI systems that automate manual work on <em>technical drawings, documents and inspection images</em>, take them into production and quantify the time they save.</p>
       <ul class="facts" aria-label="Key facts">
-        <li>Eligible to work in Germany</li><li>Based in Erlangen</li><li>Available from Dec 2026</li><li>3 years at Panasonic in Germany</li><li>English fluent · German B1 in progress</li>
+        <li>Eligible to work in Germany</li><li>Based in Erlangen</li><li>Available from Dec 2026</li><li>3 years of experience in Germany</li><li>English: fluent · German: B1 in progress</li>
       </ul>
-      <p class="seeking"><b>Looking for</b> a Senior AI, ML or Computer Vision Engineer role in Germany.</p>
+      <p class="seeking"><b>Seeking</b> a position as Senior AI Engineer, Machine Learning Engineer or Computer Vision Engineer in Germany.</p>
       <div class="cta">
-        <a class="btn solid" href="mailto:pavatharinivignesh@gmail.com?subject=AI%20role%20for%20Pavatharini%20Muthukkumar">Email me about a role</a>
-        <a class="btn" href="#fit">What I bring ↓</a>
+        <a class="btn solid" href="mailto:pavatharinivignesh@gmail.com?subject=Position%20for%20Pavatharini%20Muthukkumar">Contact me about a position</a>
+        <a class="btn" href="#fit">Profile overview ↓</a>
         <a class="btn hide-sm" href="https://linkedin.com/in/pavatharini-muthukkumar" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
 
     <figure class="plan" style="margin:0" aria-label="Interactive demo: an AI scan of a structural framing plan">
-      <div class="plan-head"><span>LEVEL 2 FRAMING PLAN · SCALE 1/8" = 1'-0"</span><span>point at the plan to steer the lens</span></div>
+      <div class="plan-head"><span>LEVEL 2 FRAMING PLAN · SCALE 1/8" = 1'-0"</span><span>move the cursor over the drawing</span></div>
       <canvas id="plan" role="img" aria-label="A structural framing plan with grid lines, columns and beams. A scanning lens marks each column, beam and grid bubble it finds."></canvas>
       <div class="plan-foot">
         <div class="counts"><span>columns <b id="c-col">0</b>/<span id="t-col">0</span></span><span>beams <b id="c-beam">0</b>/<span id="t-beam">0</span></span><span>grid bubbles <b id="c-grid">0</b>/<span id="t-grid">0</span></span></div>
         <span class="status" id="status">scanning…</span>
-        <button class="rerun" id="rerun" type="button">Run takeoff again</button>
+        <button class="rerun" id="rerun" type="button">Restart</button>
       </div>
     </figure>
   </div>
@@ -458,19 +462,19 @@ footer span{opacity:.65}
 
 <div class="numbers" aria-label="Impact in numbers">
   <div class="wrap">
-    <div class="num"><strong>12,500<small>h/yr</small></strong><span>estimator hours an AI takeoff gives back each year</span></div>
-    <div class="num"><strong>10<small>min</small></strong><span>per drawing set, against about 1.6 hours by hand</span></div>
-    <div class="num"><strong>960<small>h/yr</small></strong><span>inspection hours reclaimed on a factory line</span></div>
-    <div class="num"><strong>7</strong><span>AI engineers led: four engineers and three juniors</span></div>
+    <div class="num"><strong>12,500<small>h/yr</small></strong><span>estimator hours saved per year through automated takeoff</span></div>
+    <div class="num"><strong>10<small>min</small></strong><span>processing time per drawing set, compared with approx. 1.6 hours manually</span></div>
+    <div class="num"><strong>960<small>h/yr</small></strong><span>manual inspection hours saved per year in series production</span></div>
+    <div class="num"><strong>7</strong><span>AI engineers led: four engineers and three junior engineers</span></div>
   </div>
   <div class="wrap measure">
     <details>
-      <summary>How these numbers are measured</summary>
+      <summary>Calculation basis</summary>
       <ul>
-        <li><b>12,500 h/yr</b> = 35 drawing sets a day × (1.6 h by hand − 10 min with AI) × 250 working days.</li>
-        <li><b>10 min</b> is the processing time per drawing set in production, against about 1.6 hours of manual counting.</li>
-        <li><b>960 h/yr</b> is the manual inspection time the model removed on the production line, per year.</li>
-        <li><b>7 engineers</b>: the team I led in 2026, four AI engineers and three junior AI engineers.</li>
+        <li><b>12,500 h/yr</b> = 35 drawing sets per day × (1.6 h manual − 10 min automated) × 250 working days.</li>
+        <li><b>10 min</b>: average processing time per drawing set in production, compared with approx. 1.6 hours of manual counting.</li>
+        <li><b>960 h/yr</b>: manual inspection time eliminated per year on the production line.</li>
+        <li><b>7 engineers</b>: team size in 2026, four AI engineers and three junior AI engineers.</li>
       </ul>
     </details>
   </div>
@@ -480,38 +484,38 @@ footer span{opacity:.65}
   <div class="wrap">
     <div class="sec-head">
       <div class="sheet-no">SHEET<b>S-050</b></div>
-      <h2 id="fit-h">What I bring to your team</h2>
-      <p>Three kinds of problems I've solved in production, each with the proof on this page.</p>
+      <h2 id="fit-h">What I offer your team</h2>
+      <p>Three problem areas in which I have delivered production systems, each with evidence on this page.</p>
     </div>
     <div class="offers">
       <article class="offer">
-        <p class="label">If your team has</p>
-        <h3>Documents and drawings read by hand</h3>
-        <p>PDFs, technical drawings, statements or schedules that people re-type or count.</p>
-        <div class="proof"><b>~12,500 h/yr</b><span>saved by an AI takeoff that reads 100-page structural drawing sets in about 10 minutes.</span></div>
-        <a href="#work">See the project →</a>
+        <p class="label">Typical challenge</p>
+        <h3>Manual document and drawing analysis</h3>
+        <p>PDFs, technical drawings, statements or schedules that are re-typed or counted manually.</p>
+        <div class="proof"><b>~12,500 h/yr</b><span>saved by an automated takeoff that processes 100-page structural drawing sets in approx. 10 minutes.</span></div>
+        <a href="#work">View project →</a>
       </article>
       <article class="offer">
-        <p class="label">If your team has</p>
-        <h3>Visual inspection on a line</h3>
-        <p>Parts or boards checked by eye, where a missed defect reaches the customer.</p>
-        <div class="proof"><b>960 h/yr</b><span>of inspection time saved at Panasonic in Germany, recognised with a Business Unit Director Award.</span></div>
-        <a href="#try" data-tab="t-inspect">Try the inspection →</a>
+        <p class="label">Typical challenge</p>
+        <h3>Visual inspection in production</h3>
+        <p>Components or boards inspected by eye, where an undetected defect reaches the customer.</p>
+        <div class="proof"><b>960 h/yr</b><span>inspection time saved at Panasonic in Germany; recognised with the Business Unit Director Award.</span></div>
+        <a href="#try" data-tab="t-inspect">View example →</a>
       </article>
       <article class="offer">
-        <p class="label">If your team has</p>
-        <h3>GenAI that must be reliable</h3>
-        <p>LLM features that need grounded answers, validation and a sensible cost.</p>
-        <div class="proof"><b>Live</b><span>Kubera Finance: rules first, Gemini for the rest, every answer checked against a fixed list. Public code with tests.</span></div>
-        <a href="#try" data-tab="t-kubera">Try it live →</a>
+        <p class="label">Typical challenge</p>
+        <h3>Reliable GenAI and agent workflows</h3>
+        <p>LLM and VLM features that require grounded answers, validated output and controlled cost.</p>
+        <div class="proof"><b>Validated</b><span>Qwen3.6 agent with geometric rule checks for steel components; Kubera Finance validates every Gemini answer against a fixed category list.</span></div>
+        <a href="#try" data-tab="t-kubera">Open live example →</a>
       </article>
     </div>
     <div class="ways">
-      <p class="label">How I work</p>
-      <div><b>Measure first</b><span>A baseline before, the same metric after. Every number on this page was measured.</span></div>
-      <div><b>No silent regressions</b><span>Each release is checked against every validated real-world case before it ships.</span></div>
-      <div><b>Lead by reviewing</b><span>Seven engineers, every pull request reviewed, sprints planned together.</span></div>
-      <div><b>Write it down</b><span>Specifications, infrastructure sizing and handover notes that the next person can use.</span></div>
+      <p class="label">Working principles</p>
+      <div><b>Measured results</b><span>Every result is compared with a measured baseline; all figures on this page are measured.</span></div>
+      <div><b>Zero-regression releases</b><span>Every release is validated against all reference cases before deployment.</span></div>
+      <div><b>Technical leadership</b><span>Lead for seven engineers: review of every pull request and joint sprint planning.</span></div>
+      <div><b>Clear documentation</b><span>Specifications, infrastructure sizing and handover documentation that others can build on.</span></div>
     </div>
   </div>
 </section>
@@ -520,8 +524,8 @@ footer span{opacity:.65}
   <div class="wrap">
     <div class="sec-head">
       <div class="sheet-no">SHEET<b>S-100</b></div>
-      <h2 id="work-h">Selected work</h2>
-      <p>Projects from my jobs, newest first. Open any card for the problem, the approach and the result. To try them yourself, go to <a href="#try">Try it out</a>.</p>
+      <h2 id="work-h">Selected projects</h2>
+      <p>Professional projects and one personal project, newest first. Each card opens a short summary of problem, approach and result; interactive examples are available under <a href="#try">Try it out</a>.</p>
     </div>
 
     <div class="filters" role="group" aria-label="Filter projects">
@@ -537,57 +541,81 @@ footer span{opacity:.65}
 
       <article class="card feature" data-tags="vision docai eng">
         <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
-          <div class="meta"><span>2026 · Team lead</span><span>Flagship</span></div>
-          <h3>AI steel takeoff from structural drawings</h3>
-          <p class="what">Estimators count every column, beam, truss and brace in a structural drawing set by hand before they can price a steel job. This system reads the whole PDF and returns the counts and a labour-hour estimate. The plan scanner at the top of this page shows the idea.</p>
-          <div class="impact"><b>~90%</b><span>less effort per drawing set: about 10 minutes instead of 1.6 hours, across 35 sets a day</span></div>
-          <ul class="stack"><li>Qwen3-VL</li><li>YOLO</li><li>PyMuPDF</li><li>Shapely</li><li>Detectron2</li><li>Docling</li><li>AWS Step Functions</li><li>Lambda</li><li>Bedrock</li></ul>
+          <div class="meta"><span>2026 · Technical lead</span><span>Flagship</span></div>
+          <h3>Automated steel takeoff from structural drawings</h3>
+          <p class="what">Before quoting a steel structure, estimators count every column, beam, truss and brace manually in drawing sets of 100+ pages. The system processes the complete PDF and returns component quantities and a labour-hour estimate.</p>
+          <div class="impact"><b>~90%</b><span>less effort per drawing set: approx. 10 minutes instead of 1.6 hours, at 35 drawing sets per day</span></div>
+          <ul class="stack"><li>Qwen3.6</li><li>Qwen3-VL</li><li>Agentic workflow</li><li>YOLO</li><li>PyMuPDF</li><li>Shapely</li><li>Detectron2</li><li>Docling</li><li>AWS Step Functions</li><li>Lambda</li><li>Bedrock</li></ul>
           <details>
             <summary>How it works</summary>
             <dl class="story">
-              <div><dt>Problem</dt><dd style="margin:0">Seven estimators spent their days counting steel on 100+ page drawing sets. Slow, and easy to miss a piece.</dd></div>
-              <div><dt>Approach</dt><dd style="margin:0">A VLM sorts the pages, tiled YOLO finds symbols, and vector geometry reads beams, columns and grid lines straight from the PDF. Dedicated readers handle trusses, bracing, knee braces and L-angles.</dd></div>
-              <div><dt>Result</dt><dd style="margin:0">Validated on 60+ real drawing sets. A reduce stage made 4.3× faster (302 s to 70 s), and every release is gated on zero regressions across all of them.</dd></div>
+              <div><dt>Problem</dt><dd style="margin:0">Seven estimators performed the takeoff manually: time-consuming and prone to omissions.</dd></div>
+              <div><dt>Approach</dt><dd style="margin:0">A vision-language model classifies the pages, tiled YOLO detects symbols, and vector geometry extracts beams, columns and grid lines directly from the PDF. Trusses, bracing, knee braces and L-angles are handled by an agentic workflow: each section view is sent to Qwen3.6 together with a component card that describes how the component appears in a section; geometric rules then validate the count, and every mismatch is returned to Qwen3.6 for re-validation.</dd></div>
+              <div><dt>Result</dt><dd style="margin:0">Validated on 60+ real drawing sets. Reduce stage accelerated 4.3× (302 s → 70 s); every release requires zero regressions across all validated sets.</dd></div>
             </dl>
           </details>
         </div>
         <div class="pipe" aria-label="Pipeline stages">
-          <div class="stage"><i>01</i><div><b>Sort the pages</b><span>VLM labels plans, sections, schedules and details</span></div></div>
+          <div class="stage"><i>01</i><div><b>Page classification</b><span>A VLM labels plans, sections, schedules and details</span></div></div>
           <div class="arrow">↓ parallel workers, one per page batch</div>
-          <div class="stage"><i>02</i><div><b>Find the symbols</b><span>Tiled YOLO at 200 DPI; grid bubbles from vector circles</span></div></div>
-          <div class="stage"><i>03</i><div><b>Read the geometry</b><span>Beam and column lines, truss spans at the sheet's own scale</span></div></div>
-          <div class="stage"><i>04</i><div><b>De-duplicate across sheets</b><span>Grid-anchored matching so a column drawn twice counts once</span></div></div>
-          <div class="stage"><i>05</i><div><b>Count and estimate</b><span>Component totals and labour hours for the estimator</span></div></div>
+          <div class="stage"><i>02</i><div><b>Symbol detection</b><span>Tiled YOLO at 200 DPI; grid bubbles from vector geometry</span></div></div>
+          <div class="stage"><i>03</i><div><b>Geometry extraction</b><span>Beam and column lines, truss spans at each sheet's scale</span></div></div>
+          <div class="stage"><i>04</i><div><b>Component agent</b><span>Qwen3.6 with component cards; geometric rules validate, mismatches are re-validated</span></div></div>
+          <div class="stage"><i>05</i><div><b>De-duplication and estimate</b><span>Grid-anchored matching across sheets; totals and labour hours</span></div></div>
         </div>
       </article>
 
       <article class="card" data-tags="genai">
-        <div class="meta"><span>2026 · Team lead</span><span>RAG</span></div>
-        <h3>AI staff-training quizzes for restaurants</h3>
-        <p class="what">Restaurant managers wrote Kahoot quizzes by hand so waiters would learn the menu. This system writes them from the menu itself.</p>
-        <div class="impact"><b>0</b><span>quizzes written by hand: food, wine, cocktail and beer questions are generated</span></div>
+        <div class="meta"><span>2026 · Technical lead</span><span>RAG</span></div>
+        <h3>AI-generated staff training quizzes</h3>
+        <p class="what">Restaurant managers created training quizzes for service staff manually in Kahoot. The system generates them directly from the menu data.</p>
+        <div class="impact"><b>4</b><span>menu areas covered automatically: food, wine, cocktails and beer</span></div>
         <ul class="stack"><li>FastAPI</li><li>Titan v2 embeddings</li><li>OpenSearch</li><li>Qdrant</li><li>Bedrock</li></ul>
         <details>
           <summary>How it works</summary>
           <dl class="story">
-            <div><dt>Approach</dt><dd style="margin:0">A RAG pipeline turns menu data into grounded questions and answers.</dd></div>
-            <div><dt>Result</dt><dd style="margin:0">A leaderboard keeps staff playing, and feedback teaches each person the answers they missed.</dd></div>
+            <div><dt>Approach</dt><dd style="margin:0">A RAG pipeline (Titan v2 embeddings, OpenSearch/Qdrant, Bedrock LLM) generates questions and answers grounded in the menu data.</dd></div>
+            <div><dt>Result</dt><dd style="margin:0">A leaderboard encourages regular participation; targeted feedback explains each incorrect answer with the relevant menu entry.</dd></div>
           </dl>
         </details>
       </article>
 
+      <article class="card" data-tags="eng genai">
+        <div class="meta"><span>2026 · Technical lead</span><span>MLOps</span></div>
+        <h3>MLOps and production readiness</h3>
+        <p class="what">CI/CD pipelines, containerised AWS Lambda deployments, automated regression testing and GPU sizing for on-premise customer installations.</p>
+        <div class="impact"><b>0</b><span>regressions permitted: every release is validated against all reference drawing sets</span></div>
+        <ul class="stack"><li>GitHub Actions</li><li>Docker</li><li>uv</li><li>ruff</li><li>pyright</li><li>pytest</li></ul>
+      </article>
+
+      <article class="card" data-tags="genai docai">
+        <div class="meta"><span>2025–26 · Personal project</span><span>Live demo</span></div>
+        <h3>Kubera Finance: bank statement analysis</h3>
+        <p class="what">Automated processing of PDF and Excel statements from four German banks into categorised transactions and a monthly dashboard.</p>
+        <div class="impact"><b>4 banks</b><span>DKB, N26, Deutsche Bank and Barclays, with de-duplication and recurring-contract detection</span></div>
+        <ul class="stack"><li>pdfplumber</li><li>Gemini</li><li>Supabase</li><li>Appsmith</li><li>Streamlit</li><li>pytest</li></ul>
+        <details>
+          <summary>How it works</summary>
+          <dl class="story">
+            <div><dt>Approach</dt><dd style="margin:0">Rule-based classification for well-known merchants; Gemini for all remaining transactions, validated against a fixed table of 61 categories. Every transaction records which method decided it.</dd></div>
+            <div><dt>Result</dt><dd style="margin:0">Public live demo and open-source code with automated tests.</dd></div>
+          </dl>
+        </details>
+        <div class="links"><a href="https://kuberafinanceapp.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a><a href="https://github.com/Pavatharini-Muthukkumar/Kubera_Finance_app" target="_blank" rel="noopener">Code ↗</a><a href="#try" data-tab="t-kubera">Interactive example ↓</a></div>
+      </article>
+
       <article class="card" data-tags="vision">
         <div class="meta"><span>2022–25 · Panasonic</span><span>Award</span></div>
-        <h3>Automatic optical inspection</h3>
-        <p class="what">A YOLOR model that finds improperly seated connectors on electric-car control boards, for a German premium EV maker, right on the production line.</p>
-        <div class="impact"><b>960 h</b><span>of inspection time reclaimed every year, and a Business Unit Director Award</span></div>
+        <h3>Automated optical inspection of connectors</h3>
+        <p class="what">YOLOR-based detection of incorrectly seated connectors on electric-vehicle control boards for a German premium automotive manufacturer, integrated into the production line.</p>
+        <div class="impact"><b>960 h</b><span>manual inspection time saved per year; Business Unit Director Award</span></div>
         <ul class="stack"><li>YOLOR</li><li>Object detection</li><li>Python</li></ul>
         <details>
           <summary>How it works</summary>
           <dl class="story">
-            <div><dt>Problem</dt><dd style="margin:0">A connector that is tilted, half-plugged or has a bent pin passes electrical tests on the line and fails later in the car.</dd></div>
-            <div><dt>Approach</dt><dd style="margin:0">Built and deployed a YOLOR detector that checks every connector on the board image, and led the rollout with quality teams in Germany and Slovakia.</dd></div>
-            <div><dt>Result</dt><dd style="margin:0">Higher inspection precision and a measurable cut in manual review.</dd></div>
+            <div><dt>Problem</dt><dd style="margin:0">Tilted, partially inserted or bent-pin connectors can pass electrical end-of-line tests and fail later in the vehicle.</dd></div>
+            <div><dt>Approach</dt><dd style="margin:0">Developed and deployed a YOLOR detector that checks every connector in the board image; led the roll-out with quality teams in Germany and Slovakia.</dd></div>
+            <div><dt>Result</dt><dd style="margin:0">Higher inspection precision and a measurable reduction in manual inspection effort.</dd></div>
           </dl>
         </details>
       </article>
@@ -595,15 +623,15 @@ footer span{opacity:.65}
       <article class="card" data-tags="nlp">
         <div class="meta"><span>2022 · Panasonic</span><span>M.Tech thesis</span></div>
         <h3>Automotive requirements classifier</h3>
-        <p class="what">System engineers read thousands of automotive requirements by hand to decide which teams each one concerns. My master's thesis automated that analysis.</p>
-        <div class="impact"><b>80%</b><span>accuracy on 9,000+ unique requirements; presented to the President and Directors of Panasonic Europe</span></div>
+        <p class="what">System engineers analysed thousands of automotive requirements manually to assign them to the responsible teams. My master's thesis automated this analysis.</p>
+        <div class="impact"><b>80%</b><span>accuracy on 9,000+ unique requirements; results presented to the President and Directors of Panasonic Europe</span></div>
         <ul class="stack"><li>Multi-label classification</li><li>NLP pipelines</li><li>Python</li></ul>
         <details>
           <summary>How it works</summary>
           <dl class="story">
-            <div><dt>Problem</dt><dd style="margin:0">One requirement can concern several teams at once, so manual review was slow and easy to route wrongly.</dd></div>
-            <div><dt>Approach</dt><dd style="margin:0">Compared machine-learning models for multi-label text classification and built the full pipeline, from feature extraction to evaluation.</dd></div>
-            <div><dt>Result</dt><dd style="margin:0">80% accuracy on 9,000+ requirements, turned into a tool for the system engineering team. <a href="#try" data-tab="t-router">Try a simplified version ↓</a></dd></div>
+            <div><dt>Problem</dt><dd style="margin:0">A single requirement can concern several teams, which made manual assignment slow and error-prone.</dd></div>
+            <div><dt>Approach</dt><dd style="margin:0">Comparative evaluation of machine-learning models for multi-label text classification; end-to-end pipeline from feature extraction to evaluation.</dd></div>
+            <div><dt>Result</dt><dd style="margin:0">80% accuracy on 9,000+ requirements, implemented as a tool for the system engineering department. <a href="#try" data-tab="t-router">View simplified example ↓</a></dd></div>
           </dl>
         </details>
       </article>
@@ -611,31 +639,23 @@ footer span{opacity:.65}
       <article class="card" data-tags="nlp">
         <div class="meta"><span>2023–25 · Panasonic</span><span>Data</span></div>
         <h3>Predictive maintenance</h3>
-        <p class="what">Statistical models on production logs that spot early wear before a machine fails.</p>
-        <div class="impact"><b>Early</b><span>correction instead of unplanned downtime</span></div>
+        <p class="what">Statistical analysis of production logs to identify early wear patterns before equipment failure.</p>
+        <div class="impact"><b>Proactive</b><span>maintenance instead of unplanned downtime</span></div>
         <ul class="stack"><li>Statistical modelling</li><li>Production logs</li><li>Python</li></ul>
       </article>
 
       <article class="card" data-tags="eng">
         <div class="meta"><span>2018–21 · Infosys</span><span>Full stack</span></div>
-        <h3>European logistics platform</h3>
-        <p class="what">Large-scale logistics software for a European client, built in Angular and .NET Core microservices.</p>
-        <div class="impact"><b>60%+</b><span>lower latency on complex searches after moving retrieval to Elasticsearch</span></div>
+        <h3>Logistics platform for a European client</h3>
+        <p class="what">Large-scale logistics software developed with Angular and .NET Core microservices.</p>
+        <div class="impact"><b>60%+</b><span>lower latency for complex search queries after migrating retrieval to Elasticsearch</span></div>
         <ul class="stack"><li>Angular</li><li>.NET Core</li><li>Elasticsearch</li></ul>
         <details>
           <summary>How it works</summary>
           <dl class="story">
-            <div><dt>Also</dt><dd style="margin:0">Set up the EU acceptance-test environment with automated schema migrations; 100% on-time delivery with international Scrum teams.</dd></div>
+            <div><dt>Additionally</dt><dd style="margin:0">Set up the EU acceptance-test environment with automated database schema migrations; 100% on-time delivery in international Scrum teams.</dd></div>
           </dl>
         </details>
-      </article>
-
-      <article class="card" data-tags="eng genai">
-        <div class="meta"><span>2026 · Team lead</span><span>MLOps</span></div>
-        <h3>Shipping AI safely</h3>
-        <p class="what">The engineering behind the models: CI/CD, Dockerised Lambda images, regression sweeps and GPU sizing for on-prem clients.</p>
-        <div class="impact"><b>0</b><span>regressions allowed: every release is checked against every validated drawing set</span></div>
-        <ul class="stack"><li>GitHub Actions</li><li>Docker</li><li>uv</li><li>ruff</li><li>pyright</li><li>pytest</li></ul>
       </article>
 
     </div>
@@ -650,7 +670,7 @@ footer span{opacity:.65}
     <div class="sec-head">
       <div class="sheet-no">SHEET<b>S-150</b></div>
       <h2 id="try-h">Try it out</h2>
-      <p>Each project in one small, hands-on example: what goes in, what comes out, and how it gets there in three steps.</p>
+      <p>Interactive examples for selected projects: input, output and the three processing steps.</p>
     </div>
 
     <div class="tabs" role="tablist" aria-label="Projects to try">
@@ -658,23 +678,23 @@ footer span{opacity:.65}
       <button class="tab" role="tab" id="t-takeoff" aria-controls="p-takeoff" aria-selected="false" type="button">Steel takeoff</button>
       <button class="tab" role="tab" id="t-inspect" aria-controls="p-inspect" aria-selected="false" type="button">Connector inspection</button>
       <button class="tab" role="tab" id="t-quiz" aria-controls="p-quiz" aria-selected="false" type="button">Staff quiz</button>
-      <button class="tab" role="tab" id="t-router" aria-controls="p-router" aria-selected="false" type="button">Requirement router</button>
+      <button class="tab" role="tab" id="t-router" aria-controls="p-router" aria-selected="false" type="button">Requirement classifier</button>
     </div>
 
     <!-- Kubera -->
     <div class="panel" role="tabpanel" id="p-kubera" aria-labelledby="t-kubera">
       <div class="panel-info">
         <p class="label">Personal project · 2025–26</p>
-        <h3>Sort a bank booking</h3>
+        <h3>Classify a bank transaction</h3>
         <ol class="how">
-          <li><b>Read</b> PDF and Excel statements from DKB, N26, Deutsche Bank and Barclays.</li>
-          <li><b>Rule first:</b> 33 patterns catch well-known shops for free, instantly.</li>
-          <li><b>Gemini for the rest:</b> its answer must match a fixed list of 61 categories, or the booking waits for review.</li>
+          <li><b>Import:</b> PDF and Excel statements from DKB, N26, Deutsche Bank and Barclays.</li>
+          <li><b>Rules first:</b> 33 patterns classify well-known merchants instantly and at no cost.</li>
+          <li><b>Gemini for the remainder:</b> the answer must match a fixed list of 61 categories; otherwise the transaction is flagged for review.</li>
         </ol>
         <div class="cta" style="margin-top:6px"><a class="btn solid" href="https://kuberafinanceapp.streamlit.app/" target="_blank" rel="noopener">Open live demo ↗</a><a class="btn" href="https://github.com/Pavatharini-Muthukkumar/Kubera_Finance_app" target="_blank" rel="noopener">Code ↗</a></div>
       </div>
       <div class="panel-play">
-        <label class="fld" for="booking">Booking text from a statement</label>
+        <label class="fld" for="booking">Transaction text</label>
         <input id="booking" class="inp" type="text" value="Kita Sonnenschein Elternbeitrag" autocomplete="off" spellcheck="false">
         <div class="samples" aria-label="Examples">
           <button type="button">REWE Markt Erlangen</button><button type="button">Kita Sonnenschein Elternbeitrag</button><button type="button">Zahnarztpraxis Dr. Huber</button><button type="button">Biergarten Entla's Keller</button><button type="button">Stadtwerke Erlangen Strom Abschlag</button><button type="button">Volkshochschule Erlangen Deutschkurs B1</button><button type="button">Tierarztpraxis Dr. Klein</button>
@@ -688,51 +708,51 @@ footer span{opacity:.65}
     <!-- Steel takeoff -->
     <div class="panel" role="tabpanel" id="p-takeoff" aria-labelledby="t-takeoff" hidden>
       <div class="panel-info">
-        <p class="label">Work project · 2026</p>
-        <h3>Sort a drawing set</h3>
+        <p class="label">Professional project · 2026</p>
+        <h3>Process a drawing set</h3>
         <ol class="how">
-          <li><b>Sort the pages:</b> a vision-language model tells plans from schedules, sections and notes.</li>
-          <li><b>Read each page its own way:</b> count symbols on plans, read sizes from schedules, measure trusses on elevations.</li>
-          <li><b>Count once:</b> a column drawn on two sheets is matched by its grid position and counted one time.</li>
+          <li><b>Page classification:</b> a vision-language model distinguishes plans, schedules, sections and general notes.</li>
+          <li><b>Component recognition:</b> symbols are detected on plans; each section view is sent to Qwen3.6 with a component card (e.g. knee brace, L-angle) describing how to identify it.</li>
+          <li><b>Validation:</b> geometric rules check every count, mismatches are returned to Qwen3.6 for re-validation, and components shown on several sheets are counted once.</li>
         </ol>
-        <p class="note">The plan scanner at the <a href="#top">top of this page</a> shows step 2 on a framing plan.</p>
+        <p class="note">The interactive drawing at the <a href="#top">top of this page</a> illustrates symbol detection on a framing plan.</p>
       </div>
       <div class="panel-play">
         <div class="sheets" id="sheets"></div>
-        <div class="row"><button class="btn solid" id="sort" type="button">Sort the pages</button><span class="note" id="sort-sum">8 pages in a typical drawing set</span></div>
+        <div class="row"><button class="btn solid" id="sort" type="button">Classify pages</button><span class="note" id="sort-sum">8 pages of a typical drawing set</span></div>
       </div>
     </div>
 
     <!-- Connector inspection -->
     <div class="panel" role="tabpanel" id="p-inspect" aria-labelledby="t-inspect" hidden>
       <div class="panel-info">
-        <p class="label">Work project · Panasonic · 2022–25</p>
-        <h3>Inspect a board</h3>
+        <p class="label">Professional project · Panasonic · 2022–25</p>
+        <h3>Inspect a control board</h3>
         <ol class="how">
-          <li><b>Photograph</b> every control board on the line for a German premium EV maker.</li>
-          <li><b>Detect</b> each connector with a YOLOR model and check how it sits.</li>
-          <li><b>Reject</b> tilted, half-plugged or bent-pin connectors before the board ships.</li>
+          <li><b>Image capture:</b> every control board for a German premium automotive manufacturer is imaged on the line.</li>
+          <li><b>Detection:</b> a YOLOR model locates each connector and assesses its seating.</li>
+          <li><b>Decision:</b> tilted, partially inserted or bent-pin connectors are rejected before shipment.</li>
         </ol>
-        <p class="note">Result: 960 inspection hours a year back to the team, and a Business Unit Director Award.</p>
+        <p class="note">Result: 960 inspection hours saved per year; Business Unit Director Award.</p>
       </div>
       <div class="panel-play">
         <figure class="aoi" style="margin:0">
           <canvas id="aoi" role="img" aria-label="A circuit board with six connectors. Running the inspection marks four as OK and flags one tilted connector and one with a bent pin."></canvas>
-          <figcaption><span id="aoi-sum">6 connectors · press Inspect</span><button class="rerun" id="aoi-run" type="button">Inspect board</button></figcaption>
+          <figcaption><span id="aoi-sum">6 connectors · ready for inspection</span><button class="rerun" id="aoi-run" type="button">Inspect board</button></figcaption>
         </figure>
-        <p class="note">Illustration: a drawn board, not a production image.</p>
+        <p class="note">Illustration: schematic board, not a production image.</p>
       </div>
     </div>
 
     <!-- Staff quiz -->
     <div class="panel" role="tabpanel" id="p-quiz" aria-labelledby="t-quiz" hidden>
       <div class="panel-info">
-        <p class="label">Work project · 2026</p>
-        <h3>Answer a menu quiz</h3>
+        <p class="label">Professional project · 2026</p>
+        <h3>Answer a training quiz</h3>
         <ol class="how">
-          <li><b>Read the menu:</b> dishes, ingredients, allergens and pairings are indexed for search.</li>
-          <li><b>Write questions</b> grounded in that menu text, so every answer can be checked.</li>
-          <li><b>Teach on misses:</b> a wrong answer shows the menu line it came from; a leaderboard keeps staff playing.</li>
+          <li><b>Indexing:</b> dishes, ingredients, allergens and pairings are indexed for retrieval.</li>
+          <li><b>Generation:</b> questions are generated from the menu text, so every answer is verifiable.</li>
+          <li><b>Feedback:</b> incorrect answers are explained with the source menu entry; a leaderboard encourages participation.</li>
         </ol>
       </div>
       <div class="panel-play">
@@ -740,7 +760,7 @@ footer span{opacity:.65}
         <p class="q" id="q-text"></p>
         <div class="opts" id="q-opts"></div>
         <p class="note" id="q-fb" aria-live="polite"></p>
-        <p class="note">Illustration with a made-up menu item.</p>
+        <p class="note">Illustration with a fictitious menu item.</p>
       </div>
     </div>
 
@@ -748,11 +768,11 @@ footer span{opacity:.65}
     <div class="panel" role="tabpanel" id="p-router" aria-labelledby="t-router" hidden>
       <div class="panel-info">
         <p class="label">M.Tech thesis · Panasonic · 2022</p>
-        <h3>Route a requirement</h3>
+        <h3>Classify a requirement</h3>
         <ol class="how">
-          <li><b>Collect</b> requirement sentences from automotive specifications.</li>
-          <li><b>Tag</b> each with every team it concerns: one sentence can need several.</li>
-          <li><b>Route</b> it to those teams. The trained model was right 80% of the time on 9,000+ requirements.</li>
+          <li><b>Input:</b> requirement statements from automotive specifications.</li>
+          <li><b>Multi-label classification:</b> each statement is assigned to every relevant team.</li>
+          <li><b>Routing:</b> the statement is forwarded to those teams; the trained model reached 80% accuracy on 9,000+ requirements.</li>
         </ol>
       </div>
       <div class="panel-play">
@@ -764,15 +784,15 @@ footer span{opacity:.65}
           <button type="button">The board shall report its status on the CAN bus every 100 ms.</button>
         </div>
         <div class="labels" id="req-labels" aria-live="polite"></div>
-        <p class="note">Simplified with keywords so it runs in your browser. The real model learned these tags from data.</p>
+        <p class="note">Simplified keyword version that runs in your browser; the original model was trained on labelled data.</p>
       </div>
     </div>
 
     <div class="also" aria-label="Also built">
-      <p class="label">Also built</p>
-      <div><b>Agentic AI with MCP and A2A</b><span>2025 · personal · agents that use tools over the Model Context Protocol and hand work to each other.</span></div>
-      <div><b>Automatic image captioning</b><span>2022 · M.Tech capstone, BITS Pilani · a CNN encoder and RNN decoder that describe a photo in one sentence.</span></div>
-      <div><b>Data collection in sensor networks</b><span>2018 · B.E. project · swarm and fruit-fly optimisation to pick cluster heads and plan the collector's route.</span></div>
+      <p class="label">Further projects</p>
+      <div><b>Agentic AI with MCP and A2A</b><span>2025 · personal project · autonomous agents that use tools via the Model Context Protocol and coordinate via Agent-to-Agent communication.</span></div>
+      <div><b>Automatic image captioning</b><span>2022 · M.Tech capstone, BITS Pilani · CNN encoder and RNN decoder that generate a one-sentence image description.</span></div>
+      <div><b>Data collection in wireless sensor networks</b><span>2018 · B.E. project · particle swarm and fruit fly optimisation for cluster-head selection and collector route planning.</span></div>
     </div>
   </div>
 </section>
@@ -781,32 +801,32 @@ footer span{opacity:.65}
   <div class="wrap">
     <div class="sec-head">
       <div class="sheet-no">SHEET<b>S-200</b></div>
-      <h2 id="path-h">The path</h2>
-      <p>From full-stack engineering in India to applied AI in Germany. Round markers are roles, square ones are degrees.</p>
+      <h2 id="path-h">Career</h2>
+      <p>From full-stack engineering in India to applied AI in Germany. Circles mark positions, squares mark degrees.</p>
     </div>
     <div class="path">
       <div class="stop now"><div class="when">Apr 2026 – Nov 2026</div><div class="rail"></div><div class="body">
-        <h3>Senior AI Engineer</h3><p class="org">AI for construction estimation · team lead</p>
-        <ul><li>Led <b>4 AI engineers and 3 junior AI engineers</b>: technical direction, every pull request reviewed, sprint planning.</li><li>Built an <b>AI steel takeoff system</b> and an <b>AI staff-training quiz generator</b>, from prototype to AWS production and on-prem deployment.</li></ul>
+        <h3>Senior AI Engineer</h3><p class="org">AI for construction cost estimation · technical lead</p>
+        <ul><li>Led a team of <b>4 AI engineers and 3 junior AI engineers</b>: technical direction, review of every pull request, sprint planning.</li><li>Delivered an <b>automated steel takeoff system</b> with a Qwen3.6 component agent and an <b>AI-based training quiz generator</b>, from prototype to AWS production and on-premise deployment.</li></ul>
       </div></div>
       <div class="stop"><div class="when">May 2025 – Mar 2026</div><div class="rail"></div><div class="body">
-        <h3>Independent AI researcher &amp; developer</h3><p class="org">Self-directed · Germany</p>
-        <ul><li>Agentic AI with <b>MCP</b> and <b>A2A</b>; built <b>Kubera Finance</b>.</li><li>German <b>A2</b> certified (BFZ Nuremberg), <b>B1</b> in progress.</li></ul>
+        <h3>Independent AI Researcher &amp; Developer</h3><p class="org">Independent · Germany</p>
+        <ul><li>Agentic AI with <b>MCP</b> and <b>A2A</b>; developed <b>Kubera Finance</b>.</li><li>German <b>A2</b> certificate (BFZ Nuremberg); <b>B1</b> in progress.</li></ul>
       </div></div>
       <div class="stop"><div class="when">Dec 2022 – Apr 2025</div><div class="rail"></div><div class="body">
         <h3>Data Scientist</h3><p class="org">Panasonic Industrial Devices Europe · Lüneburg, Germany</p>
-        <ul><li>YOLOR inspection reclaiming <b>960 labour hours a year</b>; <b>Business Unit Director Award</b>.</li><li>Predictive maintenance and data initiatives with teams in Germany, Slovakia and Austria.</li></ul>
+        <ul><li>YOLOR-based optical inspection saving <b>960 labour hours per year</b>; <b>Business Unit Director Award</b>.</li><li>Predictive maintenance and data initiatives with teams in Germany, Slovakia and Austria.</li></ul>
       </div></div>
       <div class="stop"><div class="when">Apr 2022 – Sep 2022</div><div class="rail"></div><div class="body">
         <h3>Data Science Researcher</h3><p class="org">Panasonic Industrial Devices Europe · M.Tech thesis</p>
-        <ul><li>Thesis: classified <b>9,000+</b> automotive requirements at <b>80%</b> accuracy; presented to Panasonic Europe's leadership.</li></ul>
+        <ul><li>Master's thesis: classification of <b>9,000+</b> automotive requirements at <b>80%</b> accuracy; presented to the management of Panasonic Europe.</li></ul>
       </div></div>
       <div class="stop edu"><div class="when">2020 – 2022</div><div class="rail"></div><div class="body">
         <h3>M.Tech, Data Science &amp; Engineering</h3><p class="org">BITS Pilani · CGPA 8.43/10</p>
       </div></div>
       <div class="stop"><div class="when">Jun 2018 – Dec 2021</div><div class="rail"></div><div class="body">
         <h3>Senior Systems Engineer</h3><p class="org">Infosys · Kerala, India</p>
-        <ul><li>Logistics platform in Angular and .NET Core; Elasticsearch cut search latency by <b>60%+</b>.</li></ul>
+        <ul><li>Logistics platform in Angular and .NET Core; search latency reduced by <b>60%+</b> with Elasticsearch.</li></ul>
       </div></div>
       <div class="stop edu"><div class="when">2014 – 2018</div><div class="rail"></div><div class="body" style="padding-bottom:0">
         <h3>B.E., Computer Science &amp; Engineering</h3><p class="org">St. Joseph's Institute of Technology, Chennai · CGPA 8.09/10</p>
@@ -819,21 +839,21 @@ footer span{opacity:.65}
   <div class="wrap">
     <div class="sec-head">
       <div class="sheet-no">SHEET<b>S-300</b></div>
-      <h2 id="tool-h">Toolbox</h2>
-      <p>What I reach for, grouped by the job it does.</p>
+      <h2 id="tool-h">Technical skills</h2>
+      <p>Grouped by area of application.</p>
     </div>
     <div class="tools">
-      <div class="tool"><h3>See</h3><p>YOLO, YOLOR, Detectron2, CNNs, Qwen3-VL and other VLMs, PyTorch, TensorFlow</p></div>
-      <div class="tool"><h3>Read documents</h3><p>PyMuPDF vector geometry, Shapely, pdfplumber, Docling, table parsing, OCR</p></div>
-      <div class="tool"><h3>Generate &amp; retrieve</h3><p>RAG, AWS Bedrock (Nova, Titan, Qwen), Gemini, OpenSearch, Qdrant, MCP, A2A, Ollama</p></div>
-      <div class="tool"><h3>Ship</h3><p>AWS Lambda, Step Functions, S3, ECR, Docker, GitHub Actions, MLflow, uv, pytest, pyright</p></div>
-      <div class="tool"><h3>Build</h3><p>Python (expert), FastAPI, SQL and PostgreSQL, Supabase, .NET Core, Angular, Elasticsearch</p></div>
-      <div class="tool"><h3>Lead</h3><p>Team of 7, code review, sprint planning, client requirements, infrastructure sizing</p></div>
+      <div class="tool"><h3>Computer vision</h3><p>YOLO, YOLOR, Detectron2, CNNs, vision-language models (Qwen3.6, Qwen3-VL), PyTorch, TensorFlow</p></div>
+      <div class="tool"><h3>Document AI</h3><p>PyMuPDF vector geometry, Shapely, pdfplumber, Docling, table parsing, OCR</p></div>
+      <div class="tool"><h3>GenAI &amp; agents</h3><p>Agentic workflows, RAG, AWS Bedrock (Nova, Titan, Qwen), Gemini, OpenSearch, Qdrant, MCP, A2A, Ollama</p></div>
+      <div class="tool"><h3>Cloud &amp; MLOps</h3><p>AWS Lambda, Step Functions, S3, ECR, Docker, GitHub Actions, MLflow, uv, pytest, pyright</p></div>
+      <div class="tool"><h3>Software engineering</h3><p>Python (expert), FastAPI, SQL and PostgreSQL, Supabase, .NET Core, Angular, Elasticsearch</p></div>
+      <div class="tool"><h3>Leadership</h3><p>Technical lead for 7 engineers, code review, sprint planning, client requirements, infrastructure sizing</p></div>
     </div>
     <div class="honors">
       <div class="honor"><b>Business Unit Director Award</b><span>Panasonic, 2024: AI-driven quality control</span></div>
       <div class="honor"><b>M.Tech, BITS Pilani</b><span>Data Science &amp; Engineering, CGPA 8.43</span></div>
-      <div class="honor"><b>Languages</b><span>English (fluent), Tamil (native), German A2, B1 in progress</span></div>
+      <div class="honor"><b>Languages</b><span>English (fluent), Tamil (native), German (A2 certified, B1 in progress)</span></div>
     </div>
   </div>
 </section>
@@ -842,14 +862,14 @@ footer span{opacity:.65}
   <div class="wrap">
     <img src="assets/photo.webp" alt="Portrait of Pavatharini Muthukkumar" width="210" height="210">
     <div>
-      <h2 id="contact-h">Let's talk about your team</h2>
-      <p>If you have a role in computer vision, document AI or production GenAI, send it to me. Interviews in English; German B1 in progress.</p>
+      <h2 id="contact-h">Get in touch</h2>
+      <p>I am available for positions in computer vision, document AI and production GenAI from December 2026. Interviews in English; German B1 in progress.</p>
       <ol class="next" aria-label="What happens next">
-        <li><b>Send me the role</b> by email or LinkedIn.</li>
-        <li><b>I reply with my CV</b> and times for a call (CET).</li>
-        <li><b>In the interview</b> I walk you through any project on this page in depth.</li>
+        <li><b>Send me the job description</b> by email or via LinkedIn.</li>
+        <li><b>I reply with my CV</b> and suggested appointment times (CET).</li>
+        <li><b>In the interview</b>, I am happy to present any project on this page in technical detail.</li>
       </ol>
-      <div class="cta" style="margin-top:20px"><a class="btn solid" href="mailto:pavatharinivignesh@gmail.com?subject=AI%20role%20for%20Pavatharini%20Muthukkumar">Email me about a role</a><a class="btn light" href="mailto:pavatharinivignesh@gmail.com?subject=CV%20request&body=Hello%20Pavatharini%2C%0A%0Aplease%20send%20your%20CV.%20The%20role%3A%20">Request my CV</a></div>
+      <div class="cta" style="margin-top:20px"><a class="btn solid" href="mailto:pavatharinivignesh@gmail.com?subject=Position%20for%20Pavatharini%20Muthukkumar">Contact me about a position</a><a class="btn light" href="mailto:pavatharinivignesh@gmail.com?subject=CV%20request&body=Hello%20Pavatharini%2C%0A%0Aplease%20send%20your%20CV.%20The%20role%3A%20">Request CV</a></div>
       <div class="tb">
         <div><div class="k">Email</div><div class="v"><span id="mail">pavatharinivignesh@gmail.com</span><button class="copy" id="copy" type="button">Copy</button></div></div>
         <div><div class="k">LinkedIn</div><div class="v"><a href="https://linkedin.com/in/pavatharini-muthukkumar" target="_blank" rel="noopener">pavatharini-muthukkumar</a></div></div>
@@ -863,9 +883,9 @@ footer span{opacity:.65}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Pavatharini Muthukkumar</span><span>No cookies, no tracking: fonts and images load from this site only · hosted on GitHub Pages</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Pavatharini Muthukkumar</span><span>No cookies, no tracking: fonts and images are served from this site only · hosted on GitHub Pages</span></div></footer>
 
-<a class="dock" id="dock" href="mailto:pavatharinivignesh@gmail.com?subject=AI%20role%20for%20Pavatharini%20Muthukkumar" hidden>Email me about a role</a>
+<a class="dock" id="dock" href="mailto:pavatharinivignesh@gmail.com?subject=Position%20for%20Pavatharini%20Muthukkumar" hidden>Contact me about a position</a>
 
 <script>
 /* ---------- theme toggle (remembered per visitor) */
@@ -1134,25 +1154,25 @@ const GEMINI_RECORDED={
   function run(){
     const t=input.value.trim();
     rr.className=''; rl.className='';
-    if(!t){out.innerHTML='Waiting for a booking<small>Type any text from a bank statement.</small>'; note.innerHTML=''; return;}
+    if(!t){out.innerHTML='Awaiting input<small>Enter any transaction text from a bank statement.</small>'; note.innerHTML=''; return;}
     const hit=rules.find(r=>r[0].test(t));
     if(hit){
       rr.className='on';
-      out.innerHTML=`${hit[1]} → ${hit[2]}<small>Decided by a <b>merchant rule</b>: free, instant, the same answer every time. Gemini is never asked.</small>`;
-      note.innerHTML='Same 33 rules as the app, running in your browser.';
+      out.innerHTML=`${hit[1]} → ${hit[2]}<small>Classified by a <b>merchant rule</b>: instant, no cost, deterministic. Gemini is not called.</small>`;
+      note.innerHTML='The same 33 rules as in the application, executed in your browser.';
       return;
     }
     rl.className='on';
     const g=recorded[t.toLowerCase()];
     if(g && g[0]){
-      out.innerHTML=`${g[0]} → ${g[1]}<small>No rule knows this text, so <b>Gemini</b> decided. This is its real answer, recorded from the ${demo} on 8 Oct 2026.</small>`;
-      note.innerHTML='Gemini sees the booking text and the fixed list of 61 categories, nothing else.';
+      out.innerHTML=`${g[0]} → ${g[1]}<small>No rule matches, so <b>Gemini</b> classified this transaction. Actual Gemini output, recorded from the ${demo} on 8 October 2026.</small>`;
+      note.innerHTML='Gemini receives only the transaction text and the fixed list of 61 categories.';
     }else if(g){
-      out.innerHTML=`Needs review<small><b>Gemini</b> looked and found no category in the list that fits, so the booking waits for a person. Real answer, recorded from the ${demo}.</small>`;
-      note.innerHTML='Refusing to guess is the point: an invented category would be rejected anyway.';
+      out.innerHTML=`Flagged for review<small><b>Gemini</b> found no suitable category in the list, so the transaction is passed to a person. Actual Gemini output, recorded from the ${demo}.</small>`;
+      note.innerHTML='By design, the model does not guess: any category outside the list would be rejected.';
     }else{
-      out.innerHTML=`Goes to Gemini<small>No rule knows this text. This page can't call Gemini without exposing an API key, so try this booking in the ${demo}, where Gemini answers in a few seconds.</small>`;
-      note.innerHTML='Or pick one of the examples: their Gemini answers were recorded from the live demo.';
+      out.innerHTML=`Forwarded to Gemini<small>No rule matches. This static page cannot call Gemini without exposing an API key; please enter this text in the ${demo}, where Gemini responds within seconds.</small>`;
+      note.innerHTML='Alternatively, select one of the examples; their Gemini results were recorded from the live demo.';
     }
   }
   input.addEventListener('input',run);
@@ -1163,14 +1183,14 @@ const GEMINI_RECORDED={
 /* ---------- steel takeoff: sort a drawing set */
 (function(){
   const pages=[
-    ['S-001','General notes','skip','skip: notes'],
+    ['S-001','General notes','skip','skipped: notes'],
     ['S-101','Foundation plan','read','count columns'],
     ['S-201','Level 2 framing plan','read','count beams & columns'],
     ['S-301','Roof framing plan','read','count joists & beams'],
     ['S-401','Column schedule','read','read sizes'],
-    ['S-501','Building sections','skip','skip: no new pieces'],
+    ['S-501','Building sections','read','agent: bracing'],
     ['S-601','Truss elevations','read','measure trusses'],
-    ['S-701','Connection details','read','count knee braces'],
+    ['S-701','Connection details','read','agent: knee braces, L-angles'],
   ];
   const box=document.getElementById('sheets'), sum=document.getElementById('sort-sum'), btn=document.getElementById('sort');
   const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -1198,8 +1218,8 @@ const GEMINI_RECORDED={
     sorted=!sorted;
     cards.forEach((c,i)=>{ c.classList.remove('read','skip'); if(sorted) setTimeout(()=>c.classList.add(pages[i][2]),matchMedia('(prefers-reduced-motion: reduce)').matches?0:i*140); });
     const n=pages.filter(p=>p[2]==='read').length;
-    sum.textContent=sorted?`${n} pages read, ${pages.length-n} skipped`:'8 pages in a typical drawing set';
-    btn.textContent=sorted?'Reset':'Sort the pages';
+    sum.textContent=sorted?`${n} pages processed, ${pages.length-n} skipped`:'8 pages of a typical drawing set';
+    btn.textContent=sorted?'Reset':'Classify pages';
   });
   new ResizeObserver(draw).observe(box);
   new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
@@ -1217,9 +1237,9 @@ const GEMINI_RECORDED={
   const qt=document.getElementById('q-text'), ob=document.getElementById('q-opts'), fb=document.getElementById('q-fb');
   function render(){
     if(i>=qs.length){
-      qt.textContent=`You scored ${score} of ${qs.length}.`;
-      ob.innerHTML=`<button type="button" id="q-again">Play again</button>`;
-      fb.innerHTML=`Leaderboard this week: <b>you ${score*100} pts</b>, server 2 ${200} pts, server 3 ${100} pts.`;
+      qt.textContent=`Result: ${score} of ${qs.length} correct.`;
+      ob.innerHTML=`<button type="button" id="q-again">Restart</button>`;
+      fb.innerHTML=`Leaderboard this week: <b>you ${score*100} pts</b>, colleague B 200 pts, colleague C 100 pts.`;
       document.getElementById('q-again').onclick=()=>{i=0;score=0;render();}; return;
     }
     const q=qs[i]; qt.textContent=`Question ${i+1} of ${qs.length}: ${q.q}`; fb.textContent='';
@@ -1228,7 +1248,7 @@ const GEMINI_RECORDED={
       const k=+b.dataset.k, ok=k===q.a; if(ok) score++;
       ob.querySelectorAll('button').forEach(x=>{x.disabled=true; if(+x.dataset.k===q.a) x.classList.add('right');});
       if(!ok) b.classList.add('wrong');
-      fb.innerHTML=(ok?'Correct. ':'Not quite. ')+`The menu says ${q.src} `+'<button class="rerun" type="button" id="q-next">Next</button>';
+      fb.innerHTML=(ok?'Correct. ':'Incorrect. ')+`Source: ${q.src} `+'<button class="rerun" type="button" id="q-next">Next</button>';
       document.getElementById('q-next').onclick=()=>{i++;render();};
     });
   }
@@ -1250,7 +1270,7 @@ const GEMINI_RECORDED={
   const ta=document.getElementById('req'), out=document.getElementById('req-labels');
   function run(){
     const t=ta.value; const hit=tags.filter(([,r])=>r.test(t)).map(([n])=>n);
-    out.innerHTML=hit.length?hit.map(n=>`<span>${n}</span>`).join(''):'<em>No team tag found. Try a sentence with "shall".</em>';
+    out.innerHTML=hit.length?hit.map(n=>`<span>${n}</span>`).join(''):'<em>No team identified. Try a statement containing "shall".</em>';
   }
   ta.addEventListener('input',run);
   document.querySelectorAll('#req-samples button').forEach(b=>b.addEventListener('click',()=>{ta.value=b.textContent;run();}));
@@ -1299,7 +1319,7 @@ const GEMINI_RECORDED={
     });
     if(scan>=0 && scan<W){ctx.strokeStyle=C.plan;ctx.lineWidth=2;ctx.globalAlpha=.8;ctx.beginPath();ctx.moveTo(scan,0);ctx.lineTo(scan,H);ctx.stroke();
       ctx.globalAlpha=.08;ctx.fillStyle=C.plan;ctx.fillRect(0,0,scan,H);ctx.globalAlpha=1;}
-    if(scan<0) sum.textContent='6 connectors · press Inspect';
+    if(scan<0) sum.textContent='6 connectors · ready for inspection';
     else if(scan<W) sum.textContent=`inspecting… ${found}/6`;
     else sum.innerHTML=`6 connectors · <b>${bad} rejected</b>`;
   }

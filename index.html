@@ -430,13 +430,28 @@ footer span{opacity:.65}
   .nav .nav-contact{display:block;margin-top:12px;border:0;border-radius:4px;text-align:center;background:var(--accent);color:var(--on-accent)}
   .nav .nav-contact:hover{color:var(--on-accent)}
 }
+
+/* ---------- title block per sheet (bottom right, like a drawing) */
+.sec-head{display:block}
+.sec-head h2{margin-bottom:8px}
+.sheet-tag{grid-column:1/-1;justify-self:end;margin-left:auto;margin-top:clamp(28px,4vw,44px);display:grid;grid-template-columns:auto auto;border:1.5px solid var(--ink);background:var(--sheet);font-family:var(--f-mono);width:max-content;max-width:100%}
+.sheet-tag .st-k{grid-row:span 2;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 4px;border-right:1px solid var(--rule);text-align:center}
+.sheet-tag b{font-family:var(--f-display);font-weight:800;font-size:1.9rem;line-height:1;padding:8px 12px 2px;color:var(--accent);font-variant-numeric:tabular-nums}
+.sheet-tag .st-t{grid-column:2;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 8px;display:flex;gap:8px;align-items:baseline}
+.sheet-tag .st-t small{color:var(--muted);font-size:.66rem}
+.contact .sheet-tag{border-color:color-mix(in srgb,var(--paper) 45%,transparent);background:transparent}
+.contact .sheet-tag .st-k,.contact .sheet-tag .st-t small{color:var(--paper);opacity:.7}
+.contact .sheet-tag b{color:var(--paper)}
+.contact .sheet-tag .st-k{border-color:color-mix(in srgb,var(--paper) 30%,transparent)}
+.mark img{width:30px;height:30px;border-radius:50%;border:2px solid var(--accent);background:var(--paper);object-fit:cover}
+@media (max-width:640px){.sheet-tag b{font-size:1.5rem}.sheet-tag{margin-top:24px}}
 </style>
 </head>
 <body>
 
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#top"><i>P</i>Pavatharini M.</a>
+    <a class="mark" href="#top"><img src="assets/photo-96.webp" alt="" width="30" height="30">Pavatharini M.</a>
     <nav class="nav" id="site-nav" aria-label="Sections">
       <a href="#work">Projects</a><a href="#try">Try it</a><a href="#path">Career</a><a href="#toolbox">Skills</a><a class="nav-contact" href="#contact">Contact</a>
     </nav>
@@ -504,7 +519,6 @@ footer span{opacity:.65}
 <section id="fit" aria-labelledby="fit-h">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sheet-no">SHEET<b>S-050</b></div>
       <h2 id="fit-h">What I offer your team</h2>
       <p>Three problem areas in which I have delivered production systems, each with evidence on this page.</p>
     </div>
@@ -538,13 +552,13 @@ footer span{opacity:.65}
       <div><b>Technical leadership</b><span>Lead for seven engineers: review of every pull request and joint sprint planning.</span></div>
       <div><b>Clear documentation</b><span>Specifications, infrastructure sizing and handover documentation that others can build on.</span></div>
     </div>
+    <div class="sheet-tag" aria-label="Sheet 1 of 6: Profile overview"><span class="st-k">Sheet</span><b>001</b><span class="st-t">Profile overview<small>of 006</small></span></div>
   </div>
 </section>
 
 <section id="work" aria-labelledby="work-h">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sheet-no">SHEET<b>S-100</b></div>
       <h2 id="work-h">Selected projects</h2>
       <p>Professional projects and one personal project, newest first. Each card opens a short summary of problem, approach and result; interactive examples are available under <a href="#try">Try it out</a>.</p>
     </div>
@@ -682,6 +696,7 @@ footer span{opacity:.65}
     </div>
     <button class="btn more" id="more" type="button">Show 6 more projects</button>
 
+    <div class="sheet-tag" aria-label="Sheet 2 of 6: Selected projects"><span class="st-k">Sheet</span><b>002</b><span class="st-t">Selected projects<small>of 006</small></span></div>
   </div>
 </section>
 
@@ -689,7 +704,6 @@ footer span{opacity:.65}
   <span id="kubera-try"></span><span id="kubera"></span>
   <div class="wrap">
     <div class="sec-head">
-      <div class="sheet-no">SHEET<b>S-150</b></div>
       <h2 id="try-h">Try it out</h2>
       <p>Interactive examples for selected projects: input, output and the three processing steps.</p>
     </div>
@@ -815,13 +829,13 @@ footer span{opacity:.65}
       <div><b>Automatic image captioning</b><span>2022 · M.Tech capstone, BITS Pilani · CNN encoder and RNN decoder that generate a one-sentence image description.</span></div>
       <div><b>Data collection in wireless sensor networks</b><span>2018 · B.E. project · particle swarm and fruit fly optimisation for cluster-head selection and collector route planning.</span></div>
     </div>
+    <div class="sheet-tag" aria-label="Sheet 3 of 6: Try it out"><span class="st-k">Sheet</span><b>003</b><span class="st-t">Try it out<small>of 006</small></span></div>
   </div>
 </section>
 
 <section id="path" aria-labelledby="path-h" style="background:var(--sheet);border-block:1.5px solid var(--ink)">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sheet-no">SHEET<b>S-200</b></div>
       <h2 id="path-h">Career</h2>
       <p>From full-stack engineering in India to applied AI in Germany. Circles mark positions, squares mark degrees.</p>
     </div>
@@ -853,13 +867,13 @@ footer span{opacity:.65}
         <h3>B.E., Computer Science &amp; Engineering</h3><p class="org">St. Joseph's Institute of Technology, Chennai · CGPA 8.09/10</p>
       </div></div>
     </div>
+    <div class="sheet-tag" aria-label="Sheet 4 of 6: Career"><span class="st-k">Sheet</span><b>004</b><span class="st-t">Career<small>of 006</small></span></div>
   </div>
 </section>
 
 <section id="toolbox" aria-labelledby="tool-h">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sheet-no">SHEET<b>S-300</b></div>
       <h2 id="tool-h">Technical skills</h2>
       <p>Grouped by area of application.</p>
     </div>
@@ -876,6 +890,7 @@ footer span{opacity:.65}
       <div class="honor"><b>M.Tech, BITS Pilani</b><span>Data Science &amp; Engineering, CGPA 8.43</span></div>
       <div class="honor"><b>Languages</b><span>English (fluent), Tamil (native), German (A2 certified, B1 in progress)</span></div>
     </div>
+    <div class="sheet-tag" aria-label="Sheet 5 of 6: Technical skills"><span class="st-k">Sheet</span><b>005</b><span class="st-t">Technical skills<small>of 006</small></span></div>
   </div>
 </section>
 
@@ -900,6 +915,7 @@ footer span{opacity:.65}
         <div><div class="k">Based in</div><div class="v">Erlangen, Germany</div></div>
       </div>
     </div>
+    <div class="sheet-tag" aria-label="Sheet 6 of 6: Contact"><span class="st-k">Sheet</span><b>006</b><span class="st-t">Contact<small>of 006</small></span></div>
   </div>
 </section>
 </main>

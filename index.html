@@ -462,7 +462,7 @@ footer span{opacity:.65}
 
 <div class="numbers" aria-label="Impact in numbers">
   <div class="wrap">
-    <div class="num"><strong>12,500<small>h/yr</small></strong><span>estimator hours saved per year through automated takeoff</span></div>
+    <div class="num"><strong>12,500<small>h/yr</small></strong><span>estimator hours saved per year by automating steel quantity takeoff</span></div>
     <div class="num"><strong>10<small>min</small></strong><span>processing time per drawing set, compared with approx. 1.6 hours manually</span></div>
     <div class="num"><strong>960<small>h/yr</small></strong><span>manual inspection hours saved per year in series production</span></div>
     <div class="num"><strong>7</strong><span>AI engineers led: four engineers and three junior engineers</span></div>
@@ -492,7 +492,7 @@ footer span{opacity:.65}
         <p class="label">Typical challenge</p>
         <h3>Manual document and drawing analysis</h3>
         <p>PDFs, technical drawings, statements or schedules that are re-typed or counted manually.</p>
-        <div class="proof"><b>~12,500 h/yr</b><span>saved by an automated takeoff that processes 100-page structural drawing sets in approx. 10 minutes.</span></div>
+        <div class="proof"><b>~12,500 h/yr</b><span>saved by automating steel quantity takeoff (counting every component to price a job) on 100-page drawing sets, in approx. 10 minutes each.</span></div>
         <a href="#work">View project →</a>
       </article>
       <article class="offer">
@@ -543,24 +543,24 @@ footer span{opacity:.65}
         <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
           <div class="meta"><span>2026 · Technical lead</span><span>Flagship</span></div>
           <h3>Automated steel takeoff from structural drawings</h3>
-          <p class="what">Before quoting a steel structure, estimators count every column, beam, truss and brace manually in drawing sets of 100+ pages. The system processes the complete PDF and returns component quantities and a labour-hour estimate.</p>
+          <p class="what">Before quoting a steel structure, estimators perform a takeoff: they count every column, beam, truss and brace manually in drawing sets of 100+ pages. The system processes the complete PDF and returns component quantities and a labour-hour estimate.</p>
           <div class="impact"><b>~90%</b><span>less effort per drawing set: approx. 10 minutes instead of 1.6 hours, at 35 drawing sets per day</span></div>
           <ul class="stack"><li>Qwen3.6</li><li>Qwen3-VL</li><li>Agentic workflow</li><li>YOLO</li><li>PyMuPDF</li><li>Shapely</li><li>Detectron2</li><li>Docling</li><li>AWS Step Functions</li><li>Lambda</li><li>Bedrock</li></ul>
           <details>
             <summary>How it works</summary>
             <dl class="story">
               <div><dt>Problem</dt><dd style="margin:0">Seven estimators performed the takeoff manually: time-consuming and prone to omissions.</dd></div>
-              <div><dt>Approach</dt><dd style="margin:0">A vision-language model classifies the pages, tiled YOLO detects columns and rooftop units (RTUs), and vector geometry extracts beams and grid lines directly from the PDF. Trusses and horizontal and vertical bracing are counted with geometric rules. L-angles, knee braces, embed angles, loose plates and bent plates are handled by an agentic workflow: each section is sent to Qwen3.6 together with a component card that describes how the component appears in a section; geometric rules then validate the count, and every mismatch is returned to Qwen3.6 for re-validation.</dd></div>
-              <div><dt>Result</dt><dd style="margin:0">Validated on 60+ real drawing sets. Reduce stage accelerated 4.3× (302 s → 70 s); every release requires zero regressions across all validated sets.</dd></div>
+              <div><dt>Approach</dt><dd style="margin:0">A vision-language model classifies the pages, tiled YOLO detects the drawing symbols for steel columns and rooftop HVAC units (RTUs), and vector geometry extracts beams and grid lines directly from the PDF. Trusses and horizontal and vertical bracing are counted with geometric rules. Small connection parts (L-angles, knee braces, embed angles cast into concrete, loose plates and bent plates) are handled by an agentic workflow: each section drawing is sent to Qwen3.6 together with a component card that describes how the component appears in a section; geometric rules then validate the count, and every mismatch is returned to Qwen3.6 for re-validation.</dd></div>
+              <div><dt>Result</dt><dd style="margin:0">Validated on 60+ real drawing sets. Final aggregation stage accelerated 4.3× (302 s → 70 s); every release requires zero regressions across all validated sets.</dd></div>
             </dl>
           </details>
         </div>
         <div class="pipe" aria-label="Pipeline stages">
-          <div class="stage"><i>01</i><div><b>Page classification</b><span>A VLM labels plans, sections, schedules and details</span></div></div>
+          <div class="stage"><i>01</i><div><b>Page classification</b><span>A vision-language model (VLM) labels plans, sections, schedules and details</span></div></div>
           <div class="arrow">↓ parallel workers, one per page batch</div>
-          <div class="stage"><i>02</i><div><b>Column and RTU detection</b><span>Tiled YOLO at 200 DPI finds columns and rooftop units</span></div></div>
+          <div class="stage"><i>02</i><div><b>Symbol detection</b><span>Tiled YOLO finds the drawn symbols for steel columns and rooftop HVAC units (RTUs)</span></div></div>
           <div class="stage"><i>03</i><div><b>Rule-based geometry</b><span>Beams, grid lines, trusses, horizontal and vertical bracing at each sheet's scale</span></div></div>
-          <div class="stage"><i>04</i><div><b>Component agent</b><span>Qwen3.6 with component cards for L-angles, knee braces, embed angles and plates; rules validate, mismatches are re-validated</span></div></div>
+          <div class="stage"><i>04</i><div><b>Component agent</b><span>Qwen3.6 identifies small connection parts (angles, braces, plates) using component cards; rules validate, mismatches are re-validated</span></div></div>
           <div class="stage"><i>05</i><div><b>De-duplication and estimate</b><span>Grid-anchored matching across sheets; totals and labour hours</span></div></div>
         </div>
       </article>
@@ -712,7 +712,7 @@ footer span{opacity:.65}
         <h3>Process a drawing set</h3>
         <ol class="how">
           <li><b>Page classification:</b> a vision-language model distinguishes plans, schedules, sections and general notes.</li>
-          <li><b>Component recognition:</b> YOLO detects columns and rooftop units; geometric rules count beams, trusses and bracing; each section is sent to Qwen3.6 with a component card (L-angle, knee brace, embed angle, loose or bent plate) describing how to identify it.</li>
+          <li><b>Component recognition:</b> YOLO detects the symbols for steel columns and rooftop HVAC units; geometric rules count beams, trusses and bracing; each section drawing is sent to Qwen3.6 with a component card describing how to identify small connection parts such as L-angles, knee braces, embed angles and loose or bent plates.</li>
           <li><b>Validation:</b> geometric rules check every count, mismatches are returned to Qwen3.6 for re-validation, and components shown on several sheets are counted once.</li>
         </ol>
         <p class="note">The interactive drawing at the <a href="#top">top of this page</a> illustrates the detection of columns, beams and grid lines on a framing plan.</p>
@@ -1186,7 +1186,7 @@ const GEMINI_RECORDED={
     ['S-001','General notes','skip','skipped: notes'],
     ['S-101','Foundation plan','read','YOLO: columns'],
     ['S-201','Level 2 framing plan','read','YOLO: columns · rules: beams'],
-    ['S-301','Roof framing plan','read','YOLO: RTUs · rules: beams, bracing'],
+    ['S-301','Roof framing plan','read','YOLO: rooftop units · rules: beams, bracing'],
     ['S-401','Column schedule','read','read sizes'],
     ['S-501','Building sections','read','agent: L-angles, embed angles'],
     ['S-601','Truss and bracing elevations','read','rules: trusses, vertical bracing'],

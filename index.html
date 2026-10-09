@@ -623,14 +623,14 @@ footer span{opacity:.65}
       <article class="card" data-tags="nlp">
         <div class="meta"><span>2022 · Panasonic</span><span>M.Tech thesis</span></div>
         <h3>Automotive requirements classifier</h3>
-        <p class="what">System engineers analysed thousands of automotive requirements manually to assign them to the responsible teams. My master's thesis automated this analysis.</p>
+        <p class="what">System engineers analysed thousands of automotive requirement documents manually to decide which departments must receive each one: software, hardware, CAD or IT. My master's thesis automated this analysis.</p>
         <div class="impact"><b>80%</b><span>accuracy on 9,000+ unique requirements; results presented to the President and Directors of Panasonic Europe</span></div>
         <ul class="stack"><li>Multi-label classification</li><li>NLP pipelines</li><li>Python</li></ul>
         <details>
           <summary>How it works</summary>
           <dl class="story">
-            <div><dt>Problem</dt><dd style="margin:0">A single requirement can concern several teams, which made manual assignment slow and error-prone.</dd></div>
-            <div><dt>Approach</dt><dd style="margin:0">Comparative evaluation of machine-learning models for multi-label text classification; end-to-end pipeline from feature extraction to evaluation.</dd></div>
+            <div><dt>Problem</dt><dd style="margin:0">A single requirement document often concerns several departments, which made manual distribution slow and error-prone.</dd></div>
+            <div><dt>Approach</dt><dd style="margin:0">Comparative evaluation of machine-learning models for multi-label text classification, so that one document can be assigned to several departments; end-to-end pipeline from feature extraction to evaluation.</dd></div>
             <div><dt>Result</dt><dd style="margin:0">80% accuracy on 9,000+ requirements, implemented as a tool for the system engineering department. <a href="#try" data-tab="t-router">View simplified example ↓</a></dd></div>
           </dl>
         </details>
@@ -768,23 +768,23 @@ footer span{opacity:.65}
     <div class="panel" role="tabpanel" id="p-router" aria-labelledby="t-router" hidden>
       <div class="panel-info">
         <p class="label">M.Tech thesis · Panasonic · 2022</p>
-        <h3>Classify a requirement</h3>
+        <h3>Route a requirement document</h3>
         <ol class="how">
-          <li><b>Input:</b> requirement statements from automotive specifications.</li>
-          <li><b>Multi-label classification:</b> each statement is assigned to every relevant team.</li>
-          <li><b>Routing:</b> the statement is forwarded to those teams; the trained model reached 80% accuracy on 9,000+ requirements.</li>
+          <li><b>Input:</b> a requirement document from an automotive specification.</li>
+          <li><b>Multi-label classification:</b> the model predicts every responsible department: software, hardware, CAD or IT, often more than one.</li>
+          <li><b>Distribution:</b> the document is sent to each predicted department; the trained model reached 80% accuracy on 9,000+ requirements.</li>
         </ol>
       </div>
       <div class="panel-play">
-        <label class="fld" for="req">Requirement</label>
-        <textarea id="req" class="inp" rows="3" spellcheck="false">The system shall detect an unplugged connector within 50 ms and store a fault code.</textarea>
+        <label class="fld" for="req">Requirement document</label>
+        <textarea id="req" class="inp" rows="3" spellcheck="false">The control unit firmware shall detect an unplugged connector on the board within 50 ms and store a fault code.</textarea>
         <div class="samples" id="req-samples">
-          <button type="button">The control unit shall operate between -40 °C and 85 °C.</button>
-          <button type="button">Firmware updates shall be signed and verified before installation.</button>
-          <button type="button">The board shall report its status on the CAN bus every 100 ms.</button>
+          <button type="button">The connector housing shall be modelled in the 3D CAD assembly with 2 mm clearance to the PCB.</button>
+          <button type="button">Diagnostic logs shall be uploaded to the central server over an encrypted VPN connection.</button>
+          <button type="button">The board shall operate between -40 °C and 85 °C and tolerate supply-voltage variations of ±10%.</button>
         </div>
         <div class="labels" id="req-labels" aria-live="polite"></div>
-        <p class="note">Simplified keyword version that runs in your browser; the original model was trained on labelled data.</p>
+        <p class="note">Simplified keyword version that runs in your browser; the original model was trained on labelled requirement documents.</p>
       </div>
     </div>
 
@@ -1258,19 +1258,15 @@ const GEMINI_RECORDED={
 /* ---------- requirement router (keyword stand-in for the trained model) */
 (function(){
   const tags=[
-    ['Safety',/\b(fault|safe|safety|hazard|detect|fail)/i],
-    ['Electrical',/\b(connector|voltage|current|wire|wiring|unplugged|short|power)/i],
-    ['Software',/\b(software|firmware|update|code|signed|verify|install)/i],
-    ['Diagnostics',/\b(fault code|diagnos|report|status|log)/i],
-    ['Timing',/\b(\d+\s?ms|within|every|latency|cycle)/i],
-    ['Communication',/\b(can bus|can|lin|ethernet|bus|message)/i],
-    ['Environment',/(°c|temperature|humidity|vibration|-?\d+\s?°)/i],
-    ['Security',/\b(signed|signature|encrypt|authent|secure)/i],
+    ['Software department',/\b(software|firmware|algorithm|fault code|diagnos|bootloader|calibration|signal processing|update|parameter)/i],
+    ['Hardware department',/\b(board|pcb|connector|housing|voltage|current|sensor|wiring|harness|°c|temperature|component|power supply|emc)/i],
+    ['CAD department',/\b(cad|3d|assembly|drawing|clearance|tolerance|dimension|modell?ed|layout|mounting)/i],
+    ['IT department',/\b(server|network|vpn|cloud|database|access rights|user account|backup|encrypted|upload|log ?file|it infrastructure)/i],
   ];
   const ta=document.getElementById('req'), out=document.getElementById('req-labels');
   function run(){
     const t=ta.value; const hit=tags.filter(([,r])=>r.test(t)).map(([n])=>n);
-    out.innerHTML=hit.length?hit.map(n=>`<span>${n}</span>`).join(''):'<em>No team identified. Try a statement containing "shall".</em>';
+    out.innerHTML=hit.length?hit.map(n=>`<span>${n}</span>`).join(''):'<em>No department identified. Try one of the example documents.</em>';
   }
   ta.addEventListener('input',run);
   document.querySelectorAll('#req-samples button').forEach(b=>b.addEventListener('click',()=>{ta.value=b.textContent;run();}));
